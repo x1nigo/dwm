@@ -18,7 +18,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
-static const char *fonts[]          = { "Fira Mono:regular:pixelsize=12",
+static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=12",
                                         "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
