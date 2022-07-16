@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 #define BROWSER "firefox"
-#define LAUNCHER "lfrun"
+#define FILEMANAGER "lfrun"
 #define MUSICPLAYER "mocp"
 #define STATUSBAR "dwmblocks"
 
@@ -126,7 +126,7 @@ static const char *kbd_blightdown[] = { "sh", "-c", "~/.scripts/kbd_blight dec",
 static const char *browsercmd[] = { BROWSER, NULL };
 static const char *sysmcmd[]    = { "sh", "-c", "~/.scripts/sysmenu", NULL };
 static const char *scrotcmd[]   = { "sh", "-c", "~/.scripts/screenshot", NULL };
-static const char *lfcmd[]      = { "st", "-e", LAUNCHER, NULL };
+static const char *lfcmd[]      = { "st", "-e", FILEMANAGER, NULL };
 static const char *mailcmd[]    = { "sh", "-c", "~/.scripts/syncmail", NULL };
 static const char *texcmd[]     = { "sh", "-c", "~/.scripts/texfind", NULL };
 static const char *mocpcmd[]    = { "st", "-e", MUSICPLAYER, NULL };
