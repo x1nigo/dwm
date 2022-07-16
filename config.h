@@ -8,9 +8,9 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 18;       /* horiz inner gap between windows */
+static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 16;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 16;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 28;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -19,7 +19,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
 static const char *fonts[]          = { "Liberation Mono:regular:pixelsize=14:antialias=true:autohint=true",
-                                        "JoyPixels:pixelsize=14:antialias=true:autohint=true" };
+                                        "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
 static const char norm_br[]         = "#121218";
