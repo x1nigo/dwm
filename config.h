@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "brave"
+#define BROWSER "firefox"
 #define LAUNCHER "lfrun"
 #define MUSICPLAYER "mocp"
 #define STATUSBAR "dwmblocks"
@@ -18,7 +18,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
-static const char *fonts[]          = { "Liberation Mono:regular:pixelsize=14:antialias=true:autohint=true",
+static const char *fonts[]          = { "Fira Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
