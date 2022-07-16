@@ -111,11 +111,11 @@ static const char *termcmd[]      = { "st", NULL };
 static const char *termfloatcmd[] = { "st", "-n", "stFLOAT", NULL };
 
 /* media controls */
-static const char *volupcmd[]       = { "sh", "-c", "pamixer -i 5 ; pkill -RTMIN+10 dwmblocks", NULL };
-static const char *voldowncmd[]     = { "sh", "-c", "pamixer -d 5 ; pkill -RTMIN+10 dwmblocks", NULL };
+static const char *volupcmd[]       = { "sh", "-c", "pamixer -i 5 -u ; pkill -RTMIN+10 dwmblocks", NULL };
+static const char *voldowncmd[]     = { "sh", "-c", "pamixer -d 5 -u ; pkill -RTMIN+10 dwmblocks", NULL };
 static const char *mutecmd[]        = { "sh", "-c", "pamixer -t ; pkill -RTMIN+10 dwmblocks", NULL };
-static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 ; pkill -RTMIN+1 dwmblocks", NULL };
+static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
+static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "pamixer --default-source -t ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *blightupcmd[]    = { "sh", "-c", "~/.scripts/blight inc ; pkill -RTMIN+12 dwmblocks", NULL };
 static const char *blightdowncmd[]  = { "sh", "-c", "~/.scripts/blight dec ; pkill -RTMIN+12 dwmblocks", NULL };
