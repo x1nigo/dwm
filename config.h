@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "firefox"
+#define BROWSER "brave"
 #define FILEMANAGER "lfrun"
 #define MUSICPLAYER "mocp"
 #define STATUSBAR "dwmblocks"
