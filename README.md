@@ -19,4 +19,4 @@ This particular build is meant to be used in conjunction with the other suckless
 - vanitygaps
 
 ## Requirements
-1. Install **libxft-bgra** from the AUR - since this build uses colored emojis and dwm (unpatched) doesn't allow this.
+- ***libxft-bgra*** from the AUR - since this build uses colored emojis and dwm (unpatched) doesn't allow this.
