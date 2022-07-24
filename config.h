@@ -2,7 +2,6 @@
 
 #define BROWSER "firefox"
 #define FILEMANAGER "lfrun"
-#define MUSICPLAYER "mocp"
 #define STATUSBAR "dwmblocks"
 
 /* appearance */
@@ -129,7 +128,6 @@ static const char *scrotcmd[]   = { "sh", "-c", "~/.scripts/screenshot", NULL };
 static const char *lfcmd[]      = { "st", "-e", FILEMANAGER, NULL };
 static const char *mailcmd[]    = { "sh", "-c", "~/.scripts/syncmail", NULL };
 static const char *texcmd[]     = { "sh", "-c", "~/.scripts/texfind", NULL };
-static const char *mocpcmd[]    = { "st", "-e", MUSICPLAYER, NULL };
 static const char *recordcmd[]  = { "sh", "-c", "~/.scripts/recordscreen", NULL };
 static const char *killrecord[] = { "sh", "-c", "~/.scripts/killrecording", NULL };
 static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
@@ -212,7 +210,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = texcmd } },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = recordcmd } },
-	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = mocpcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termfloatcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = emojicmd } },
 	/* tags */
