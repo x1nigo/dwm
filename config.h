@@ -18,7 +18,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
-static const char *fonts[]          = { "Jetbrains Mono:regular:pixelsize=14:antialias=true:autohint=true",
+static const char *fonts[]          = { "Fira Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
