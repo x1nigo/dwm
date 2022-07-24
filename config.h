@@ -6,7 +6,7 @@
 #define STATUSBAR "dwmblocks"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 16;       /* vert inner gap between windows */
@@ -26,7 +26,7 @@ static const char norm_br[]         = "#121218";
 static const char font_norm[]       = "#b8dcff";
 static const char font_sel[]        = "#b8dcff";
 static const char main_bg[]         = "#212338";
-static const char main_br[]         = "#980000";
+static const char main_br[]         = "#212338";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
