@@ -20,3 +20,6 @@ This particular build is meant to be used in conjunction with the other suckless
 
 ## Requirements
 - ***libxft-bgra*** from the AUR - since this build uses colored emojis and dwm (unpatched) doesn't allow this.
+
+## References
+- For the original version, see http://dwm.suckless.org/.
