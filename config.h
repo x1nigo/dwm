@@ -104,7 +104,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2]           = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]     = { "dmenu_run", "-l", "5", "-g", "5", "-sb", main_bg, "-sf", font_sel, "-nf", font_norm, "-nb", norm_bg, NULL };
 static const char *termcmd[]      = { "st", NULL };
 static const char *termfloatcmd[] = { "st", "-n", "stFLOAT", NULL };
@@ -130,6 +130,7 @@ static const char *texcmd[]     = { "sh", "-c", "~/.scripts/texfind", NULL };
 static const char *recordcmd[]  = { "sh", "-c", "~/.scripts/recordscreen", NULL };
 static const char *killrecord[] = { "sh", "-c", "~/.scripts/killrecording", NULL };
 static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
+static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "~/.scripts/webcam", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -145,25 +146,25 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-    { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-    { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+    	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+    	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-    { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-    { MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
-    { MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
+        { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
+        { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
+        { MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
+        { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
+        { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
+    	{ MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+    	{ MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+    	{ MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+    	{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+    	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
+    	{ MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -210,6 +211,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = recordcmd } },
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termfloatcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = emojicmd } },
+	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webcamcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -228,14 +230,14 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-    { ClkLtSymbol,          0,              Button3,        setlayout,      {0} },
-    { ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1 } },
+        { ClkLtSymbol,          0,              Button3,        setlayout,      {0} },
+        { ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-    { ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-    { ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-    { ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
-    { ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
-    { ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 5} },
+        { ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+        { ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+        { ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+        { ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
+        { ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 5} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
