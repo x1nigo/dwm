@@ -3,6 +3,7 @@
 #define BROWSER "firefox"
 #define FILEMANAGER "lfrun"
 #define STATUSBAR "dwmblocks"
+#define MPDClient "ncmpcpp"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -131,6 +132,7 @@ static const char *recordcmd[]  = { "sh", "-c", "~/.scripts/recordscreen", NULL 
 static const char *killrecord[] = { "sh", "-c", "~/.scripts/killrecording", NULL };
 static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
 static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "~/.scripts/webcam", NULL };
+static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -212,6 +214,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termfloatcmd } },
 	{ MODKEY,                       XK_e,      spawn,          {.v = emojicmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webcamcmd } },
+	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
