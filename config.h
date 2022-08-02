@@ -4,6 +4,8 @@
 #define FILEMANAGER "lfrun"
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
+#define RSSReader "newsboat"
+#define MAILClient "neomutt"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -133,6 +135,8 @@ static const char *killrecord[] = { "sh", "-c", "~/.scripts/killrecording", NULL
 static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
 static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "~/.scripts/webcam", NULL };
 static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
+static const char *newscmd[]    = { "st", "-e", RSSReader, NULL };
+static const char *mailcmd[]    = { "st", "-e", MAILClient, NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -215,6 +219,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = emojicmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webcamcmd } },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = newscmd } },
+        { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
