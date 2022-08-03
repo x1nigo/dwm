@@ -5,7 +5,6 @@
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
 #define RSSReader "newsboat"
-#define MAILClient "neomutt"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -20,7 +19,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
-static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
+static const char *fonts[]          = { "Liberation Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
@@ -136,7 +135,6 @@ static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
 static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "~/.scripts/webcam", NULL };
 static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
 static const char *newscmd[]    = { "st", "-e", RSSReader, NULL };
-static const char *mailcmd[]    = { "st", "-e", MAILClient, NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -220,7 +218,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webcamcmd } },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = newscmd } },
-        { MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
