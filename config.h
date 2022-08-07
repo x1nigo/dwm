@@ -22,12 +22,12 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=14:antialias=true:autohint=true" };
 /* colors */
-static const char norm_bg[]         = "#121218";
-static const char norm_br[]         = "#121218";
-static const char font_norm[]       = "#b8dcff";
-static const char font_sel[]        = "#b8dcff";
-static const char main_bg[]         = "#212338";
-static const char main_br[]         = "#980000";
+static const char norm_bg[]         = "#000";
+static const char norm_br[]         = "#000";
+static const char font_norm[]       = "#eee";
+static const char font_sel[]        = "#eee";
+static const char main_bg[]         = "#121228";
+static const char main_br[]         = "#750000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
