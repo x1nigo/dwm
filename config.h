@@ -118,21 +118,21 @@ static const char *mutecmd[]        = { "sh", "-c", "pamixer -t ; pkill -RTMIN+1
 static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "pamixer --default-source -t ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *blightupcmd[]    = { "sh", "-c", "~/.scripts/blight inc ; pkill -RTMIN+12 dwmblocks", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "~/.scripts/blight dec ; pkill -RTMIN+12 dwmblocks", NULL };
-static const char *kbd_blightup[]   = { "sh", "-c", "~/.scripts/kbd_blight inc", NULL };
-static const char *kbd_blightdown[] = { "sh", "-c", "~/.scripts/kbd_blight dec", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "brightness inc ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "brightness dec ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *kbd_blightup[]   = { "sh", "-c", "kbdbrightness inc", NULL };
+static const char *kbd_blightdown[] = { "sh", "-c", "kbdbrightness dec", NULL };
 
 /* other */
 static const char *browsercmd[] = { BROWSER, NULL };
-static const char *sysmcmd[]    = { "sh", "-c", "~/.scripts/sysmenu", NULL };
-static const char *scrotcmd[]   = { "sh", "-c", "~/.scripts/screenshot", NULL };
+static const char *sysmcmd[]    = { "sh", "-c", "systemmenu", NULL };
+static const char *scrotcmd[]   = { "sh", "-c", "screenshot", NULL };
 static const char *lfcmd[]      = { "st", "-e", FILEMANAGER, NULL };
-static const char *texcmd[]     = { "sh", "-c", "~/.scripts/texfind", NULL };
-static const char *recordcmd[]  = { "sh", "-c", "~/.scripts/recordscreen", NULL };
-static const char *killrecord[] = { "sh", "-c", "~/.scripts/killrecording", NULL };
-static const char *emojicmd[]   = { "sh", "-c", "~/.scripts/emojimenu", NULL };
-static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "~/.scripts/webcam", NULL };
+static const char *texcmd[]     = { "sh", "-c", "texfind", NULL };
+static const char *recordcmd[]  = { "sh", "-c", "recordscreen", NULL };
+static const char *killrecord[] = { "sh", "-c", "killrecording", NULL };
+static const char *emojicmd[]   = { "sh", "-c", "dmenumoji", NULL };
+static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "webcam", NULL };
 static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
 static const char *newscmd[]    = { "st", "-e", RSSReader, NULL };
 
