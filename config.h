@@ -41,14 +41,6 @@ static const unsigned int alphas[][3]      = {
     [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
-static const char *const autostart[] = {
-	"picom", NULL,
-	"nitrogen", "--restore", NULL,
-	"xsetroot", "-solid", "#005577", NULL,
-	"dwmblocks", NULL,
-	NULL /* terminate */
-};
-
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -117,8 +109,8 @@ static const char *mutecmd[]        = { "sh", "-c", "pamixer -t ; pkill -RTMIN+1
 static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "pamixer --default-source -t ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *blightupcmd[]    = { "sh", "-c", "brightness inc ; pkill -RTMIN+12 dwmblocks", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "brightness dec ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "screenbrightness inc ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "screenbrightness dec ; pkill -RTMIN+12 dwmblocks", NULL };
 static const char *kbd_blightup[]   = { "sh", "-c", "kbdbrightness inc", NULL };
 static const char *kbd_blightdown[] = { "sh", "-c", "kbdbrightness dec", NULL };
 
@@ -218,7 +210,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = webcamcmd } },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = newscmd } },
-	{ MODKEY,                       XK_x,      spawn,          {.v = bgcmd } },
+        { MODKEY,                       XK_x,      spawn,          {.v = bgcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
