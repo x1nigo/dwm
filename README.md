@@ -19,7 +19,7 @@ This particular build is meant to be used in conjunction with the other suckless
 - vanitygaps
 
 ## Requirements
-- ***libxft-bgra*** from the AUR - since this build uses colored emojis and dwm (unpatched) doesn't allow this.
+- `libxft-bgra` &ndash; since this build uses colored emojis and dwm (unpatched) doesn't allow this.
 
 ## References
 - For the original version, see http://dwm.suckless.org/.
