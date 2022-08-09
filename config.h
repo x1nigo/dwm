@@ -24,8 +24,8 @@ static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixels
 /* colors */
 static const char norm_bg[]         = "#000";
 static const char norm_br[]         = "#000";
-static const char font_norm[]       = "#eee";
-static const char font_sel[]        = "#eee";
+static const char font_norm[]       = "#e6e6e6";
+static const char font_sel[]        = "#e6e6e6";
 static const char main_bg[]         = "#121228";
 static const char main_br[]         = "#750000";
 static const unsigned int baralpha = 0xff;
