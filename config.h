@@ -5,6 +5,7 @@
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
 #define RSSReader "newsboat"
+#define TERMCLASS "st-256color"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -24,8 +25,8 @@ static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixels
 /* colors */
 static const char norm_bg[]         = "#000";
 static const char norm_br[]         = "#000";
-static const char font_norm[]       = "#e6e6e6";
-static const char font_sel[]        = "#e6e6e6";
+static const char font_norm[]       = "#eee";
+static const char font_sel[]        = "#eee";
 static const char main_bg[]         = "#121228";
 static const char main_br[]         = "#750000";
 static const unsigned int baralpha = 0xff;
@@ -52,8 +53,8 @@ static const Rule rules[] = {
     /* class            instance      title           tags mask  isfloating  isterminal  noswallow  monitor */
     { "Gimp",           NULL,         NULL,           0,         0,          0,           0,        -1 },
     { BROWSER,          NULL,         NULL,           0,         0,          0,          -1,        -1 },
-    { "st-256color",    NULL,         NULL,           0,         0,          1,           0,        -1 },
-    { "st-256color",    "stFLOAT",    NULL,           0,         1,          1,           0,        -1 },
+    { TERMCLASS,        NULL,         NULL,           0,         0,          1,           0,        -1 },
+    { TERMCLASS,        "stFLOAT",    NULL,           0,         1,          1,           0,        -1 },
     { NULL,             NULL,         "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -166,7 +167,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,		    XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
