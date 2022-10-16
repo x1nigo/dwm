@@ -28,7 +28,7 @@ static const char norm_bg[]         = "#000";
 static const char norm_br[]         = "#000";
 static const char font_norm[]       = "#eee";
 static const char font_sel[]        = "#eee";
-static const char main_bg[]         = "#121218";
+static const char main_bg[]         = "#121228";
 static const char main_br[]         = "#980000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -100,7 +100,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2]           = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]     = { "dmenu_run", "-l", "5", "-g", "5", "-sb", main_bg, "-sf", font_sel, "-nf", font_norm, "-nb", norm_bg, NULL };
+static const char *dmenucmd[]     = { "dmenu_run", NULL };
 static const char *termcmd[]      = { "st", NULL };
 static const char *termfloatcmd[] = { "st", "-n", "stFLOAT", NULL };
 
