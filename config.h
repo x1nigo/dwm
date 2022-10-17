@@ -8,7 +8,7 @@
 #define TERMCLASS "st-256color"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 16;       /* vert inner gap between windows */
@@ -29,7 +29,7 @@ static const char norm_br[]         = "#000";
 static const char font_norm[]       = "#eee";
 static const char font_sel[]        = "#eee";
 static const char main_bg[]         = "#121228";
-static const char main_br[]         = "#980000";
+static const char main_br[]         = "#bbddff";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
