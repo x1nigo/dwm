@@ -18,11 +18,11 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 22;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
-                                        "JoyPixels:pixelsize=14:antialias=true:autohint=true" };
+static const char *fonts[]          = { "Jetbrains Mono:regular:pixelsize=14:antialias=true:autohint=true",
+                                        "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#000";
 static const char norm_br[]         = "#000";
