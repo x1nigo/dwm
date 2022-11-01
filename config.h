@@ -30,7 +30,7 @@ static const char font_norm[]       = "#eee";
 static const char font_sel[]        = "#000";
 static const char main_bg[]         = "#008080";
 static const char main_br[]         = "#008080";
-static const unsigned int baralpha = 0xff;
+static const unsigned int baralpha = 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
