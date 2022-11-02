@@ -129,6 +129,8 @@ static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "we
 static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
 static const char *newscmd[]    = { "st", "-e", RSSReader, NULL };
 static const char *bgcmd[]      = { "sh", "-c", "setwallpaper -s", NULL };
+static const char *bmkcmd[]     = { "sh", "-c", "get-bookmark", NULL };
+static const char *addbmkcmd[]  = { "sh", "-c", "bookmark-it", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -213,6 +215,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = newscmd } },
         { MODKEY,                       XK_x,      spawn,          {.v = bgcmd } },
+        { MODKEY|ShiftMask,             XK_g,      spawn,          {.v = bmkcmd } },
+        { MODKEY|ControlMask,           XK_b,      spawn,          {.v = addbmkcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
