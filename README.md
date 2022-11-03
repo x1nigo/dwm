@@ -13,6 +13,7 @@ This particular build is meant to be used in conjunction with the other suckless
 - `pertag` (different layout per tag)
 - `removeborder` (removes border for monocle layout)
 - `restartsig` (allows dwm to restart its config)
+- `restoreafterrestart` (restores tags of windows upon restart &ndash; to be used alongside `restartsig`)
 - `statuscmd` (clickable events in status bar)
 - `swallow` (window swallowing)
 - `vanitygaps` (lots of options for gaps)
