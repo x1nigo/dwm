@@ -6,6 +6,7 @@
 #define MPDClient "ncmpcpp"
 #define RSSReader "newsboat"
 #define TERMCLASS "st-256color"
+#define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
