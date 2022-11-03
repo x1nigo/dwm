@@ -22,7 +22,7 @@ static const int user_bh            = 0;       /* 0 means that dwm will calculat
 
 /* fonts */
 static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
-                                        "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
+                                        "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
 static const char norm_br[]         = "#000";
