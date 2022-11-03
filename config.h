@@ -22,7 +22,7 @@ static const int user_bh            = 0;       /* 0 means that dwm will calculat
 
 /* fonts */
 static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
-                                        "JoyPixels:pixelsize=12:antialias=true:autohint=true" };
+                                        "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
 static const char norm_br[]         = "#000";
@@ -203,7 +203,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_bracketleft,          spawn, {.v = blightdowncmd } },
 	{ MODKEY|ShiftMask,             XK_d,                    spawn, {.v = killrecord } },
 	/* user-added controls */
-	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_q,      spawn,          {.v = sysmcmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrotcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = lfcmd } },
@@ -215,7 +215,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = newscmd } },
         { MODKEY,                       XK_x,      spawn,          {.v = bgcmd } },
-        { MODKEY|ShiftMask,             XK_g,      spawn,          {.v = bmkcmd } },
+        { MODKEY,                       XK_b,      spawn,          {.v = bmkcmd } },
         { MODKEY|ControlMask,           XK_b,      spawn,          {.v = addbmkcmd } },
 	/* tags */
 	TAGKEYS(                        XK_1,                      0)
