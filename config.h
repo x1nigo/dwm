@@ -119,7 +119,7 @@ static const char *kbd_blightdown[] = { "sh", "-c", "kbdbrightness dec", NULL };
 
 /* other */
 static const char *browsercmd[] = { BROWSER, NULL };
-static const char *sysmcmd[]    = { "sh", "-c", "systemmenu", NULL };
+static const char *syscmd[]     = { "sh", "-c", "systemize", NULL };
 static const char *scrotcmd[]   = { "sh", "-c", "screenshot", NULL };
 static const char *lfcmd[]      = { "st", "-e", FILEMANAGER, NULL };
 static const char *texcmd[]     = { "sh", "-c", "texfind", NULL };
@@ -205,7 +205,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,                    spawn, {.v = killrecord } },
 	/* user-added controls */
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },
-	{ MODKEY,                       XK_q,      spawn,          {.v = sysmcmd } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = syscmd } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = scrotcmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = lfcmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = texcmd } },
