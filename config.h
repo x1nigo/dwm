@@ -5,6 +5,7 @@
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
 #define RSSReader "newsboat"
+#define TERM "st"
 #define TERMCLASS "st-256color"
 #define SESSION_FILE "/tmp/dwm-session"
 
@@ -100,10 +101,10 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2]           = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *termcmd[]      = { TERM, NULL };
+static const char *termfloatcmd[] = { TERM, "-n", "stFLOAT", NULL };
 static const char *dmenucmd[]     = { "dmenu_run", NULL };
-static const char *termcmd[]      = { "st", NULL };
-static const char *termfloatcmd[] = { "st", "-n", "stFLOAT", NULL };
+static char dmenumon[2]          = "0";
 
 /* media controls */
 static const char *volupcmd[]       = { "sh", "-c", "pamixer -i 5 -u ; pkill -RTMIN+10 dwmblocks", NULL };
@@ -121,14 +122,14 @@ static const char *kbd_blightdown[] = { "sh", "-c", "kbdbrightness dec", NULL };
 static const char *browsercmd[] = { BROWSER, NULL };
 static const char *syscmd[]     = { "sh", "-c", "systemize", NULL };
 static const char *scrotcmd[]   = { "sh", "-c", "screenshot", NULL };
-static const char *lfcmd[]      = { "st", "-e", FILEMANAGER, NULL };
+static const char *lfcmd[]      = { TERM, "-e", FILEMANAGER, NULL };
 static const char *texcmd[]     = { "sh", "-c", "texfind", NULL };
 static const char *recordcmd[]  = { "sh", "-c", "recordscreen", NULL };
 static const char *killrecord[] = { "sh", "-c", "killrecording", NULL };
 static const char *emojicmd[]   = { "sh", "-c", "dmenumoji", NULL };
-static const char *webcamcmd[]  = { "st", "-n", "stFLOAT", "-e", "sh", "-c", "webcam", NULL };
-static const char *musiccmd[]   = { "st", "-e", MPDClient, NULL };
-static const char *newscmd[]    = { "st", "-e", RSSReader, NULL };
+static const char *webcamcmd[]  = { TERM, "-n", "stFLOAT", "-e", "sh", "-c", "webcam", NULL };
+static const char *musiccmd[]   = { TERM, "-e", MPDClient, NULL };
+static const char *newscmd[]    = { TERM, "-e", RSSReader, NULL };
 static const char *bgcmd[]      = { "sh", "-c", "setwallpaper -s", NULL };
 static const char *bmkcmd[]     = { "sh", "-c", "get-bookmark", NULL };
 static const char *addbmkcmd[]  = { "sh", "-c", "bookmark-it", NULL };
