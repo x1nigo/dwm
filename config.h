@@ -23,7 +23,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "Fira Mono:regular:pixelsize=14:antialias=true:autohint=true",
+static const char *fonts[]          = { "Liberation Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
@@ -137,14 +137,14 @@ static Key keys[] = {
         { MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
         { MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
     	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-    	{ MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-    	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-    	{ MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-    	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-    	{ MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-    	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-    	{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-    	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
+    	{ MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } },
+    	{ MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
+    	{ MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } },
+    	{ MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
+    	{ MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } },
+    	{ MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
+    	{ MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } },
+    	{ MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
     	{ MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
