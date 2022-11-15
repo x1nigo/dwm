@@ -28,7 +28,7 @@ static const char *fonts[]          = { "Fira Mono:regular:pixelsize=14:antialia
 /* colors */
 static const char norm_bg[]         = "#282828";
 static const char norm_br[]         = "#000";
-static const char font_norm[]       = "#eee";
+static const char font_norm[]       = "#ebdbb2";
 static const char font_sel[]        = "#000";
 static const char main_bg[]         = "#008080";
 static const char main_br[]         = "#750000";
@@ -134,12 +134,12 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_minus,                  spawn, {.v = volupcmd } },
-	{ MODKEY|ShiftMask,             XK_minus,                  spawn, {.v = voldowncmd } },
-	{ MODKEY,                       XK_equal,                  spawn, {.v = mutecmd } },
-	{ MODKEY|ShiftMask,             XK_equal,                  spawn, {.v = micmutecmd } },
-	{ MODKEY,                       XK_BackSpace,              spawn, {.v = micupcmd } },
-	{ MODKEY|ShiftMask,             XK_BackSpace,              spawn, {.v = micdowncmd } },
+	{ MODKEY,                       XK_minus,              spawn,     {.v = volupcmd } },
+	{ MODKEY|ShiftMask,             XK_minus,              spawn,     {.v = voldowncmd } },
+	{ MODKEY,                       XK_equal,              spawn,     {.v = mutecmd } },
+	{ MODKEY|ShiftMask,             XK_equal,              spawn,     {.v = micmutecmd } },
+	{ MODKEY,                       XK_BackSpace,          spawn,     {.v = micupcmd } },
+	{ MODKEY|ShiftMask,             XK_BackSpace,          spawn,     {.v = micdowncmd } },
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
         /* { MODKEY|ShiftMask,             XK_Tab,           spawn,         SHCMD("") }, */
