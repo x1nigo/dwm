@@ -26,12 +26,12 @@ static const int user_bh            = 0;       /* 0 means that dwm will calculat
 static const char *fonts[]          = { "Liberation Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
-static const char norm_bg[]         = "#222222";
+static const char norm_bg[]         = "#121218";
 static const char norm_br[]         = "#444444";
 static const char font_norm[]       = "#ebdbb2";
 static const char font_sel[]        = "#ebdbb2";
-static const char main_bg[]         = "#005577";
-static const char main_br[]         = "#005577";
+static const char main_bg[]         = "#181828";
+static const char main_br[]         = "#720000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
