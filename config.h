@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "firefox"
+#define BROWSER "brave"
 #define FILEMANAGER "lfrun"
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
@@ -23,15 +23,15 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "Fira Mono:regular:pixelsize=15:antialias=true:autohint=true",
+static const char *fonts[]          = { "Jetbrains Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#121218";
-static const char norm_br[]         = "#444444";
-static const char font_norm[]       = "#ebdbb2";
-static const char font_sel[]        = "#ebdbb2";
-static const char main_bg[]         = "#181828";
-static const char main_br[]         = "#720000";
+static const char norm_br[]         = "#121228";
+static const char font_norm[]       = "#eee";
+static const char font_sel[]        = "#eee";
+static const char main_bg[]         = "#121228";
+static const char main_br[]         = "#780000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -172,7 +172,7 @@ static Key keys[] = {
 
         /* { MODKEY,                       XK_a,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
-	/* { MODKEY,                       XK_s,      spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("screenshot") },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("killrecording") },
