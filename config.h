@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "opera"
+#define BROWSER "firefox"
 #define FILEMANAGER "lfrun"
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
@@ -10,7 +10,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 18;       /* vert inner gap between windows */
@@ -23,7 +23,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "Jetbrains Mono:regular:pixelsize=14:antialias=true:autohint=true",
+static const char *fonts[]          = { "Fira Mono:regular:pixelsize=15:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
@@ -31,7 +31,7 @@ static const char norm_br[]         = "#282828";
 static const char font_norm[]       = "#d3ebe9";
 static const char font_sel[]        = "#0a0f14";
 static const char main_bg[]         = "#ff000f";
-static const char main_br[]         = "#121228";
+static const char main_br[]         = "#780000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
