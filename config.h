@@ -237,6 +237,19 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbdbrightness inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbdbrightness dec") },
 
+        /* { MODKEY,                       XK_F1,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F2,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F6,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
+        { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
+        /* { MODKEY,                       XK_F11,        spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_F12,        spawn,      SHCMD("") }, */
+
         /* others */
         /* { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } }, */
         /* { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } }, */
