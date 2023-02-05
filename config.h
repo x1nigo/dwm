@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "firefox"
+#define BROWSER "librewolf"
 #define FILEMANAGER "lfrun"
 #define STATUSBAR "dwmblocks"
 #define MPDClient "ncmpcpp"
