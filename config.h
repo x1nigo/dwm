@@ -23,7 +23,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "Fira Mono:regular:pixelsize=15:antialias=true:autohint=true",
+static const char *fonts[]          = { "Bitstream Vera Sans Mono:regular:pixelsize=14:antialias=true:autohint=true",
                                         "NotoColorEmoji:pixelsize=13:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
