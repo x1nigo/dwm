@@ -146,7 +146,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      spawn,          SHCMD("systemize") },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT", "-e", "webcam" } } },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT", "-g", "69x18", "-e", "webcam" } } },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", FILEMANAGER } } },
