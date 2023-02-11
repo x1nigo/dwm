@@ -244,7 +244,7 @@ static Key keys[] = {
         /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F6,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
-        /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F8,         spawn,      SHCMD("get-torrent") },
         { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
         { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
         /* { MODKEY,                       XK_F11,        spawn,      SHCMD("") }, */
