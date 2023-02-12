@@ -29,8 +29,8 @@ static const char *fonts[]          = { "monospace:regular:size=10:antialias=tru
 static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#282828";
 static const char font_norm[]       = "#d3ebe9";
-static const char font_sel[]        = "#0a0f14";
-static const char main_bg[]         = "#ff000f";
+static const char font_sel[]        = "#d3ebe9";
+static const char main_bg[]         = "#121228";
 static const char main_br[]         = "#780000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
