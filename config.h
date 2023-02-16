@@ -27,7 +27,7 @@ static const char *fonts[]          = { "monospace:regular:size=10:antialias=tru
                                         "NotoColorEmoji:size=10:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
-static const char norm_br[]         = "#282828";
+static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#d3ebe9";
 static const char font_sel[]        = "#d3ebe9";
 static const char main_bg[]         = "#121228";
@@ -238,7 +238,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbdbrightness dec") },
 
         /* { MODKEY,                       XK_F1,         spawn,      SHCMD("") }, */
-        { MODKEY,                       XK_F2,         spawn,      SHCMD("fontselector") },
+        { MODKEY,                       XK_F2,         spawn,      SHCMD("font-wizard") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
