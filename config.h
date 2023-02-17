@@ -23,8 +23,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "monospace:regular:size=10:antialias=true:autohint=true",
-                                        "NotoColorEmoji:size=10:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:regular:pixelsize=12:antialias=true:autohint=true",
+                                        "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
@@ -237,7 +237,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbdbrightness inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbdbrightness dec") },
 
-        /* { MODKEY,                       XK_F1,         spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/x1nigo-dwm-guide.pdf") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("font-wizard") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
