@@ -23,15 +23,15 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 26;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
-static const char *fonts[]          = { "monospace:regular:pixelsize=12:antialias=true:autohint=true",
-                                        "NotoColorEmoji:pixelsize=12:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:regular:size=10:antialias=true:autohint=true",
+                                        "NotoColorEmoji:size=9:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#d3ebe9";
 static const char font_sel[]        = "#d3ebe9";
 static const char main_bg[]         = "#121228";
-static const char main_br[]         = "#780000";
+static const char main_br[]         = "#520000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
