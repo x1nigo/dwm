@@ -31,7 +31,7 @@ static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#ebdbb2";
 static const char font_sel[]        = "#ebdbb2";
 static const char main_bg[]         = "#121228";
-static const char main_br[]         = "#520000";
+static const char main_br[]         = "#780000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -162,7 +162,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_o,          spawn,      SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_o,          spawn,      SHCMD("") }, */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("texfind") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("zathura-master") },
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
 	/* { MODKEY|ShiftMask,             XK_bracketleft,          spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_bracketright,         spawn,     {.v = blightupcmd } },
@@ -203,7 +203,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
-	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vid-wizard") },
         { MODKEY,                       XK_b,      spawn,          SHCMD("get-bookmark") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
         { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmark-it") },
