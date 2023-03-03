@@ -10,7 +10,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 18;       /* vert inner gap between windows */
@@ -20,7 +20,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 26;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 
 /* fonts */
 static const char *fonts[]          = { "monospace:regular:size=10:antialias=true:autohint=true",
@@ -29,9 +29,9 @@ static const char *fonts[]          = { "monospace:regular:size=10:antialias=tru
 static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#ebdbb2";
-static const char font_sel[]        = "#0a0f14";
-static const char main_bg[]         = "#ffbb81";
-static const char main_br[]         = "#ffbb81";
+static const char font_sel[]        = "#ebdbb2";
+static const char main_bg[]         = "#121228";
+static const char main_br[]         = "#800000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
