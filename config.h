@@ -24,7 +24,7 @@ static const int user_bh            = 0;       /* 0 means that dwm will calculat
 
 /* fonts */
 static const char *fonts[]          = { "monospace:regular:size=10:antialias=true:autohint=true",
-                                        "NotoColorEmoji:size=9:antialias=true:autohint=true" };
+                                        "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 /* colors */
 static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
@@ -181,7 +181,7 @@ static Key keys[] = {
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
     	{ MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	/* { MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("hdmi") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -237,7 +237,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbdbrightness inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbdbrightness dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/x1nigo-dwm-guide.pdf") },
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -ms -Tpdf ~/.local/share/arwoti.ms | zathura -") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("font-wizard") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
