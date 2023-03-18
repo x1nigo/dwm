@@ -237,7 +237,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbright inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbright dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/x1nigo-dwm-guide.pdf") },
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/cios.pdf") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fonttrick") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
