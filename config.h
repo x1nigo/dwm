@@ -111,8 +111,8 @@ static const char *mutecmd[]        = { "sh", "-c", "pamixer -t ; pkill -RTMIN+1
 static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "pamixer --default-source -t ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *blightupcmd[]    = { "sh", "-c", "screenbrightness inc ; pkill -RTMIN+12 dwmblocks", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "screenbrightness dec ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "sbright inc ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; pkill -RTMIN+12 dwmblocks", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -143,10 +143,10 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
         /* { MODKEY|ShiftMask,             XK_Tab,           spawn,         SHCMD("") }, */
-	{ MODKEY,                       XK_q,      spawn,          SHCMD("systemize") },
+	{ MODKEY,                       XK_q,      spawn,          SHCMD("sysmenu") },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT", "-g", "69x18", "-e", "webcam" } } },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT", "-g", "69x18", "-e", "narcissus" } } },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", FILEMANAGER } } },
@@ -154,7 +154,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
-        { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("image-guru") },
+        { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("imgview") },
         { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
         { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
@@ -162,7 +162,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_o,          spawn,      SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_o,          spawn,      SHCMD("") }, */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("zathura-master") },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("texfind") },
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
 	/* { MODKEY|ShiftMask,             XK_bracketleft,          spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_bracketright,         spawn,     {.v = blightupcmd } },
@@ -173,15 +173,15 @@ static Key keys[] = {
         /* { MODKEY,                       XK_a,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("screenshot") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("deskshot") },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("killrecording") },
+	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("antirecord") },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
     	{ MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("hdmi") },
+	{ MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("thewire") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -198,15 +198,15 @@ static Key keys[] = {
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
-        { MODKEY,                       XK_x,      spawn,          SHCMD("setwallpaper -s") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("recordscreen") },
+        { MODKEY,                       XK_x,      spawn,          SHCMD("sw -s") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("srecord") },
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vid-wizard") },
-        { MODKEY,                       XK_b,      spawn,          SHCMD("get-bookmark") },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vidz") },
+        { MODKEY,                       XK_b,      spawn,          SHCMD("copysnippet") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-        { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmark-it") },
+        { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
 	/* { MODKEY,                       XK_n,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
 	{ MODKEY|ControlMask,           XK_n,      spawn,          {.v = (const char*[]){ TERM, "-e", RSSReader } } },
@@ -234,17 +234,17 @@ static Key keys[] = {
 	{ 0,             XF86XK_AudioMicMute,          spawn,      {.v = micmutecmd } },
 	{ 0,             XF86XK_MonBrightnessUp,       spawn,      {.v = blightupcmd } },
 	{ 0,             XF86XK_MonBrightnessDown,     spawn,      {.v = blightdowncmd } },
-	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbdbrightness inc") },
-	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbdbrightness dec") },
+	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbright inc") },
+	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbright dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -ms -Tpdf ~/.local/share/arwoti.ms | zathura -") },
-        { MODKEY,                       XK_F2,         spawn,      SHCMD("font-wizard") },
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/x1nigo-dwm-guide.pdf") },
+        { MODKEY,                       XK_F2,         spawn,      SHCMD("fonttrick") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F6,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
-        { MODKEY,                       XK_F8,         spawn,      SHCMD("get-torrent") },
+        /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
         { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
         { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
         /* { MODKEY,                       XK_F11,        spawn,      SHCMD("") }, */
