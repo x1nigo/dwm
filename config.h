@@ -10,12 +10,12 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 18;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 12;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 32;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -30,8 +30,8 @@ static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#ebdbb2";
 static const char font_sel[]        = "#ebdbb2";
-static const char main_bg[]         = "#121228";
-static const char main_br[]         = "#800000";
+static const char main_bg[]         = "#005577";
+static const char main_br[]         = "#005577";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
@@ -150,7 +150,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", FILEMANAGER } } },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} }, 
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */

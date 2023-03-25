@@ -904,9 +904,9 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
-        /* Do not draw vacant tags */
-        if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
-            continue;
+ 		/* Do not draw vacant tags */
+ 		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+ 			continue;
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
@@ -1488,7 +1488,7 @@ restoreSession(void)
 		int check = sscanf(str, "%lu %u", &winId, &tagsForWin); // get data
 		if (check != 2) // break loop if data wasn't read correctly
 			break;
-		
+
 		for (Client *c = selmon->clients; c ; c = c->next) { // add tags to every window by winId
 			if (c->win == winId) {
 				c->tags = tagsForWin;
@@ -1507,7 +1507,7 @@ restoreSession(void)
 
 	free(str);
 	fclose(fr);
-	
+
 	// delete a file
 	remove(SESSION_FILE);
 }
@@ -1560,7 +1560,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 
 	if (c->isfloating || selmon->lt[selmon->sellt]->arrange == NULL) {
 	} else {
-		if (selmon->lt[selmon->sellt]->arrange == monocle ) {
+		if (selmon->lt[selmon->sellt]->arrange == monocle) {
 			wc.border_width = 0;
 			c->w = wc.width += c->bw * 2;
 			c->h = wc.height += c->bw * 2;
