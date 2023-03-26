@@ -10,7 +10,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -30,7 +30,7 @@ static const char norm_bg[]         = "#0a0f14";
 static const char norm_br[]         = "#0a0f14";
 static const char font_norm[]       = "#ebdbb2";
 static const char font_sel[]        = "#ebdbb2";
-static const char main_bg[]         = "#121228";
+static const char main_bg[]         = "#121218";
 static const char main_br[]         = "#880000";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -238,7 +238,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbright dec") },
 
         { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/cios.pdf") },
-        { MODKEY,                       XK_F2,         spawn,      SHCMD("fonttrick") },
+        { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
