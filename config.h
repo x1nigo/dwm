@@ -105,12 +105,13 @@ static const char *dmenucmd[]     = { "dmenu_run", NULL };
 static char dmenumon[2]          = "0";
 
 /* media controls */
-static const char *volupcmd[]       = { "sh", "-c", "pamixer -i 5 -u ; pkill -RTMIN+10 dwmblocks", NULL };
-static const char *voldowncmd[]     = { "sh", "-c", "pamixer -d 5 -u ; pkill -RTMIN+10 dwmblocks", NULL };
-static const char *mutecmd[]        = { "sh", "-c", "pamixer -t ; pkill -RTMIN+10 dwmblocks", NULL };
-static const char *micupcmd[]       = { "sh", "-c", "pamixer --default-source -i 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *micdowncmd[]     = { "sh", "-c", "pamixer --default-source -d 5 -u ; pkill -RTMIN+1 dwmblocks", NULL };
-static const char *micmutecmd[]     = { "sh", "-c", "pamixer --default-source -t ; pkill -RTMIN+1 dwmblocks", NULL };
+static const char *volupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
+static const char *voldowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
+static const char *mutecmd[]        = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)", NULL };
+static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
+static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
+static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -35 $(pidof dwmblocks)", NULL };
+
 static const char *blightupcmd[]    = { "sh", "-c", "sbright inc ; pkill -RTMIN+12 dwmblocks", NULL };
 static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; pkill -RTMIN+12 dwmblocks", NULL };
 
