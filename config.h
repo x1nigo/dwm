@@ -204,7 +204,7 @@ static Key keys[] = {
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vidz") },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vidmeister") },
         { MODKEY,                       XK_b,      spawn,          SHCMD("copysnippet") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
         { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
