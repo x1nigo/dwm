@@ -112,8 +112,8 @@ static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_A
 static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -35 $(pidof dwmblocks)", NULL };
 
-static const char *blightupcmd[]    = { "sh", "-c", "sbright inc ; pkill -RTMIN+12 dwmblocks", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; pkill -RTMIN+12 dwmblocks", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "sbright inc ; kill -46 $(pidof dwmblocks)", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; kill -46 $(pidof dwmblocks)", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -147,7 +147,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      spawn,          SHCMD("sysmenu") },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY|ControlMask,           XK_w,      spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT", "-g", "69x18", "-e", "narcissus" } } },
+	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", FILEMANAGER } } },
