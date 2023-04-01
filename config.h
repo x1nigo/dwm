@@ -57,7 +57,7 @@ static const Rule rules[] = {
     { "Gimp",           NULL,         NULL,           0,         0,          0,           0,        -1 },
     { BROWSER,          NULL,         NULL,           0,         0,          0,          -1,        -1 },
     { TERMCLASS,        NULL,         NULL,           0,         0,          1,           0,        -1 },
-    { TERMCLASS,        "stFLOAT",    NULL,           0,         1,          1,           0,        -1 },
+    { TERMCLASS,        "floast",    NULL,           0,         1,          1,           0,        -1 },
     { NULL,             NULL,         "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -195,7 +195,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "stFLOAT" } } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "floast" } } },
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
@@ -205,7 +205,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vidmeister") },
-        { MODKEY,                       XK_b,      spawn,          SHCMD("copysnippet") },
+        { MODKEY,                       XK_b,      spawn,          SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 20 | cut -d' ' -f1)") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
         { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
 	/* { MODKEY,                       XK_n,      spawn,          SHCMD("") }, */
