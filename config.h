@@ -116,7 +116,6 @@ static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; kill -46 $(pi
  * Xresources preferences to load at startup
  */
  ResourcePref resources[] = {
- 		{ "font",               STRING,  &fonts },
  		{ "normbgcolor",        STRING,  &normbgcolor },
  		{ "normbordercolor",    STRING,  &normbordercolor },
  		{ "normfgcolor",        STRING,  &normfgcolor },
