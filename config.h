@@ -1,12 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
-#define BROWSER "librewolf"
-#define FILEMANAGER "lfrun"
-#define STATUSBAR "dwmblocks"
-#define MPDClient "ncmpcpp"
-#define RSSReader "newsboat"
-#define TERM "st"
+/* Constants */
 #define TERMCLASS "st-256color"
+#define TERM "st"
+#define BROWSER "librewolf"
+#define STATUSBAR "dwmblocks"
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
@@ -21,23 +19,19 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-
-/* fonts */
-static const char *fonts[]          = { "monospace:regular:size=10:antialias=true:autohint=true",
-                                        "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-/* colors */
-static const char norm_bg[]         = "#0a0f14";
-static const char norm_br[]         = "#0a0f14";
-static const char font_norm[]       = "#ebdbb2";
-static const char font_sel[]        = "#ebdbb2";
-static const char main_bg[]         = "#005577";
-static const char main_br[]         = "#880000";
+static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char normbgcolor[]           = "#0a0f14";
+static const char normbordercolor[]       = "#444444";
+static const char normfgcolor[]           = "#ebdbb2";
+static const char selfgcolor[]            = "#ebdbb2";
+static const char selbordercolor[]        = "#880000";
+static const char selbgcolor[]            = "#005577";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { font_norm, norm_bg,   norm_br   },
-	[SchemeSel]  = { font_sel,  main_bg,   main_br   },
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor, selbordercolor   },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border     */
@@ -150,7 +144,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", FILEMANAGER } } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", "lfrun" } } },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
@@ -210,10 +204,10 @@ static Key keys[] = {
         { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
 	/* { MODKEY,                       XK_n,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
-	{ MODKEY|ControlMask,           XK_n,      spawn,          {.v = (const char*[]){ TERM, "-e", RSSReader } } },
+	{ MODKEY|ControlMask,           XK_n,      spawn,          {.v = (const char*[]){ TERM, "-e", "newsboat" } } },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
-	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", MPDClient } } },
+	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", "ncmpcpp" } } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
