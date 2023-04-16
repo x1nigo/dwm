@@ -8,7 +8,6 @@ This particular build is meant to be used in conjunction with the other suckless
 - `alpha` (transparency and fixes weird borders)
 - `alwayscenter` (floating windows spawn at the center)
 - `cyclelayouts` (keybindings for switching between multiple layouts)
-- `hide_vacant_tags` (only show active tags)
 - `movestack` (allows moving of windows up/down the stack)
 - `pertag` (different layout per tag)
 - `removeborder` (removes border for monocle layout)
