@@ -213,7 +213,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "floast" } } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "floast", "-g", "80x25" } } },
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
