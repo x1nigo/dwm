@@ -238,7 +238,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
 	{ MODKEY|ControlMask,           XK_n,      spawn,          {.v = (const char*[]){ TERM, "-e", "newsboat" } } },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", "neomutt" } } },
 	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", "ncmpcpp" } } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
