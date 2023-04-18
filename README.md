@@ -13,7 +13,7 @@ This particular build is meant to be used in conjunction with the other suckless
 - [removeborder](https://dwm.suckless.org/patches/removeborder/) (removes border for monocle layout)
 - [restartsig](https://dwm.suckless.org/patches/restartsig/) (allows dwm to restart its config)
 - [restoreafterrestart](https://dwm.suckless.org/patches/restoreafterrestart/) (restores tags of windows upon restart &ndash; to be used alongside `restartsig`)
-- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/)
+- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/) (prevents dwm from drawing tags with no clients)
 - [statuscmd](https://dwm.suckless.org/patches/statuscmd/) (clickable events in status bar)
 - [swallow](https://dwm.suckless.org/patches/swallow/) (window swallowing)
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/) (lots of options for gaps)
