@@ -24,24 +24,19 @@ static char normbgcolor[]           = "#0a0f14";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#ebdbb2";
 static char selfgcolor[]            = "#ebdbb2";
-static char selbordercolor[]        = "#800000";
-static char selbgcolor[]            = "#121228";
-static char titlefgcolor[]          = "#ebdbb2";
-static char titlebgcolor[]          = "#121228";
-static char titlebordercolor[]      = "#0a0f14";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]  = { selfgcolor,  selbgcolor, selbordercolor   },
-	[SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border     */
     [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
     [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-    [SchemeTitle]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -127,9 +122,6 @@ static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; kill -46 $(pi
  		{ "selbgcolor",         STRING,  &selbgcolor },
  		{ "selbordercolor",     STRING,  &selbordercolor },
  		{ "selfgcolor",         STRING,  &selfgcolor },
-		{ "titlefgcolor",       STRING,  &titlefgcolor },
-		{ "titlebgcolor",       STRING,  &titlebgcolor },
-		{ "titlebordercolor",   STRING,  &titlebordercolor },
  		{ "borderpx",          	INTEGER, &borderpx },
  		{ "snap",          	INTEGER, &snap },
  		{ "showbar",          	INTEGER, &showbar },
