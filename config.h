@@ -20,13 +20,13 @@ static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static char normbgcolor[]           = "#0a0f14";
+static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#ebdbb2";
 static char selfgcolor[]            = "#ebdbb2";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
-static const unsigned int baralpha = 0xff;
+static const unsigned int baralpha = OPAQUE;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -161,15 +161,20 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_BackSpace,          spawn,     {.v = micdowncmd } },
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-        /* { MODKEY|ShiftMask,             XK_Tab,           spawn,         SHCMD("") }, */
+	/* { MODKEY|ShiftMask,             XK_Tab,    spawn,          SHCMD("") }, */
+	/* { MODKEY|ControlMask,           XK_Tab,    spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_q,      spawn,          SHCMD("sysmenu") },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* { MODKEY|ControlMask,           XK_q,      spawn,          SHCMD(""), */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
+	/* { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(""), */
 	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
+        /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", "lfrun" } } },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
+        /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
@@ -219,6 +224,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_x,      spawn,          SHCMD("sw -s") },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("srecord") },
+	{ MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("sw -sp") },
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
@@ -268,20 +274,6 @@ static Key keys[] = {
         { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
         /* { MODKEY,                       XK_F11,        spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F12,        spawn,      SHCMD("") }, */
-
-        /* others */
-        /* { MODKEY|Mod1Mask,              XK_i,      incrigaps,      {.i = +1 } }, */
-        /* { MODKEY|Mod1Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } }, */
-        /* { MODKEY|Mod1Mask,              XK_o,      incrogaps,      {.i = +1 } }, */
-    	/* { MODKEY|Mod1Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } }, */
-    	/* { MODKEY|Mod1Mask,              XK_6,      incrihgaps,     {.i = +1 } }, */
-    	/* { MODKEY|Mod1Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } }, */
-    	/* { MODKEY|Mod1Mask,              XK_7,      incrivgaps,     {.i = +1 } }, */
-    	/* { MODKEY|Mod1Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } }, */
-    	/* { MODKEY|Mod1Mask,              XK_8,      incrohgaps,     {.i = +1 } }, */
-    	/* { MODKEY|Mod1Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } }, */
-    	/* { MODKEY|Mod1Mask,              XK_9,      incrovgaps,     {.i = +1 } }, */
-    	/* { MODKEY|Mod1Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } }, */
 };
 
 /* button definitions */
