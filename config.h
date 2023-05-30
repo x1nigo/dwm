@@ -2,7 +2,7 @@
 
 /* Constants */
 #define TERMCLASS "st-256color"
-#define TERM "st"
+#define TERMINAL "st"
 #define BROWSER "librewolf"
 #define STATUSBAR "dwmblocks"
 #define SESSION_FILE "/tmp/dwm-session"
@@ -51,7 +51,7 @@ static const Rule rules[] = {
     { "Gimp",           NULL,         NULL,           0,         0,          0,           0,        -1 },
     { BROWSER,          NULL,         NULL,           0,         0,          0,          -1,        -1 },
     { TERMCLASS,        NULL,         NULL,           0,         0,          1,           0,        -1 },
-    { TERMCLASS,        "floast",     NULL,           0,         1,          1,           0,        -1 },
+    { TERMCLASS,        "termfloat",     NULL,           0,         1,          1,           0,        -1 },
     { NULL,             NULL,         "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -94,10 +94,6 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/* commands */
-static const char *dmenucmd[]     = { "dmenu_run", NULL };
-static char dmenumon[2]          = "0";
-
 /* media controls */
 static const char *volupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
 static const char *voldowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
@@ -106,8 +102,8 @@ static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_A
 static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -35 $(pidof dwmblocks)", NULL };
 
-static const char *blightupcmd[]    = { "sh", "-c", "sbright inc ; kill -46 $(pidof dwmblocks)", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "sbright dec ; kill -46 $(pidof dwmblocks)", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "blight inc ; kill -46 $(pidof dwmblocks)", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "blight dec ; kill -46 $(pidof dwmblocks)", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
@@ -141,7 +137,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_Escape,       spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_Escape,       spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_grave,        spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_grave,        spawn,          SHCMD("") }, */
+        { MODKEY,                       XK_grave,        spawn,          SHCMD("dmenumoji") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -169,23 +165,23 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	/* { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(""), */
 	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("dmenumoji") },
+	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){ TERM, "-e", "lfrun" } } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "lfrun"} } },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
-        /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
+        { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("recorder") },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
-        { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("imgview") },
-        { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
-        { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
+        /* { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("") }, */
+        { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +2 } },
+        { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -2 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	/* { MODKEY|ShiftMask,             XK_i,          spawn,      SHCMD("") }, */
 	/* { MODKEY,                       XK_o,          spawn,      SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_o,          spawn,      SHCMD("") }, */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = (const char*[]){"dmenu_run", NULL } } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("texfind") },
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
 	/* { MODKEY|ShiftMask,             XK_bracketleft,          spawn,     SHCMD("") }, */
@@ -199,7 +195,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	/* { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("antirecord") },
+	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
@@ -214,30 +210,30 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_semicolon,            spawn,     SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_semicolon,            spawn,     SHCMD("") }, */
-        /* { MODKEY,                       XK_apostrophe,           spawn,     SHCMD("") }, */
+        { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
-	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
+	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "floast", "-g", "80x25" } } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "120x38" } } },
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_x,      spawn,          SHCMD("sw -s") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("srecord") },
-	{ MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("sw -sp") },
+	/* { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("") }, */
+	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("vidmeister") },
+	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_b,      spawn,          SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 20 | cut -d' ' -f1)") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
         { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
-	/* { MODKEY,                       XK_n,      spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "newsboat"} } },
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
-	{ MODKEY|ControlMask,           XK_n,      spawn,          {.v = (const char*[]){ TERM, "-e", "newsboat" } } },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", "neomutt" } } },
-	{ MODKEY|ControlMask,           XK_m,      spawn,          {.v = (const char*[]){ TERM, "-e", "ncmpcpp" } } },
+	/* { MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_m,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "ncmpcpp"} } },
+	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
+	/* { MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
@@ -259,8 +255,8 @@ static Key keys[] = {
 	{ 0,             XF86XK_AudioMicMute,          spawn,      {.v = micmutecmd } },
 	{ 0,             XF86XK_MonBrightnessUp,       spawn,      {.v = blightupcmd } },
 	{ 0,             XF86XK_MonBrightnessDown,     spawn,      {.v = blightdowncmd } },
-	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("kbright inc") },
-	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("kbright dec") },
+	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("keyblight inc") },
+	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("keyblight dec") },
 
         { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/cios.pdf") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
