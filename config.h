@@ -135,7 +135,7 @@ static const char *blightdowncmd[]  = { "sh", "-c", "blight dec ; kill -46 $(pid
 static Key keys[] = {
 	/* modifier                     key        function        argument */
         /* { MODKEY|ShiftMask,             XK_Escape,       spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_Escape,       spawn,          SHCMD("") }, */
+        { MODKEY,                       XK_Escape,       spawn,          SHCMD("sysmenu") },
         /* { MODKEY|ShiftMask,             XK_grave,        spawn,          SHCMD("") }, */
         { MODKEY,                       XK_grave,        spawn,          SHCMD("dmenumoji") },
 	TAGKEYS(                        XK_1,                      0)
@@ -159,12 +159,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	/* { MODKEY|ShiftMask,             XK_Tab,    spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_Tab,    spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_q,      spawn,          SHCMD("sysmenu") },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
+	/* { MODKEY|ShiftMask,             XK_q,      spawn,          {0} }, */
 	/* { MODKEY|ControlMask,           XK_q,      spawn,          SHCMD(""), */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	/* { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(""), */
-	{ MODKEY|ControlMask,           XK_w,      spawn,          SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
@@ -181,8 +180,8 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_i,          spawn,      SHCMD("") }, */
 	/* { MODKEY,                       XK_o,          spawn,      SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_o,          spawn,      SHCMD("") }, */
-	{ MODKEY,                       XK_p,      spawn,          {.v = (const char*[]){"dmenu_run", NULL } } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("texfind") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("texfind") },
+	/* { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
 	/* { MODKEY|ShiftMask,             XK_bracketleft,          spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_bracketright,         spawn,     {.v = blightupcmd } },
@@ -194,8 +193,8 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	/* { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
@@ -213,8 +212,8 @@ static Key keys[] = {
         { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
-	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "120x38" } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "120x38" } } },
+	/* { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("") }, */
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
@@ -222,28 +221,32 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	/* { MODKEY|ShiftMask,             XK_c,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
-        { MODKEY,                       XK_b,      spawn,          SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 20 | cut -d' ' -f1)") },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-        { MODKEY|ControlMask,           XK_b,      spawn,          SHCMD("bookmarker") },
+        /* { MODKEY,                       XK_b,      spawn,          SHCMD("") }, */
+	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
+        { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "newsboat"} } },
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_m,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "ncmpcpp"} } },
 	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  cyclelayout,    {.i = -1 } },
+	/* { MODKEY|ControlMask,           XK_comma,  spawn,          SHCMD("") }, */
+	/* { MODKEY|ShiftMask,             XK_comma,  spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_period, cyclelayout,    {.i = +1 } },
+	/* { MODKEY|ControlMask,           XK_period, spawn,          SHCMD("") }, */
+	/* { MODKEY|ShiftMask,             XK_period, spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_slash,  spawn,          SHCMD("") }, */
-        /* { MODKEY|ShiftMask,             XK_slash,  spawn,          SHCMD("") }, */
+        /* { MODKEY,                       XK_slash,  spawn,          SHCMD("") }, */
+        { MODKEY,                       XK_Left,   focusmon,       {.i = -1 } },
+        { MODKEY|ShiftMask,             XK_Left,   tagmon,         {.i = -1 } },
+        { MODKEY,                       XK_Right,  focusmon,       {.i = +1 } },
+        { MODKEY|ShiftMask,             XK_Right,  tagmon,         {.i = +1 } },
 
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
 	/* media controls */
@@ -258,18 +261,21 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("keyblight inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("keyblight dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("zathura ~/.local/share/cios.pdf") },
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -mom ~/.local/share/cios.mom -Tpdf | zathura -") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
         /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F6,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
-        { MODKEY,                       XK_F8,         spawn,      SHCMD("deadshot") },
+        /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
         { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
         { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
-        /* { MODKEY,                       XK_F11,        spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F11,        spawn,      SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
         /* { MODKEY,                       XK_F12,        spawn,      SHCMD("") }, */
+
+	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
+	{ 0,               XK_Print,      spawn,         SHCMD("deadshot") },
 };
 
 /* button definitions */
