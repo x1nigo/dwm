@@ -135,7 +135,7 @@ static const char *blightdowncmd[]  = { "sh", "-c", "blight dec ; kill -46 $(pid
 static Key keys[] = {
 	/* modifier                     key        function        argument */
         /* { MODKEY|ShiftMask,             XK_Escape,       spawn,          SHCMD("") }, */
-        { MODKEY,                       XK_Escape,       spawn,          SHCMD("sysmenu") },
+        /* { MODKEY,                       XK_Escape,       spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_grave,        spawn,          SHCMD("") }, */
         { MODKEY,                       XK_grave,        spawn,          SHCMD("dmenumoji") },
 	TAGKEYS(                        XK_1,                      0)
@@ -149,12 +149,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_minus,              spawn,     {.v = volupcmd } },
-	{ MODKEY|ShiftMask,             XK_minus,              spawn,     {.v = voldowncmd } },
-	{ MODKEY,                       XK_equal,              spawn,     {.v = mutecmd } },
-	{ MODKEY|ShiftMask,             XK_equal,              spawn,     {.v = micmutecmd } },
-	{ MODKEY,                       XK_BackSpace,          spawn,     {.v = micupcmd } },
-	{ MODKEY|ShiftMask,             XK_BackSpace,          spawn,     {.v = micdowncmd } },
+	{ MODKEY,                       XK_minus,              spawn,     {.v = voldowncmd } },
+	{ MODKEY,                       XK_equal,              spawn,     {.v = volupcmd } },
+	{ MODKEY|ShiftMask,             XK_equal,              spawn,     {.v = mutecmd } },
+	{ MODKEY,                       XK_BackSpace,          spawn,     SHCMD("sysmenu") },
+	/* { MODKEY|ShiftMask,             XK_BackSpace,          spawn,     SHCMD("") }, */
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	/* { MODKEY|ShiftMask,             XK_Tab,    spawn,          SHCMD("") }, */
@@ -169,7 +168,7 @@ static Key keys[] = {
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "lfrun"} } },
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
-        { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("recorder") },
+        /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
@@ -200,7 +199,7 @@ static Key keys[] = {
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
     	{ MODKEY|Mod4Mask|ShiftMask,    XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("thewire") },
+	/* { MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -263,10 +262,10 @@ static Key keys[] = {
 
         { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -mom ~/.local/share/cios.mom -Tpdf | zathura -") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
-        /* { MODKEY,                       XK_F3,         spawn,      SHCMD("") }, */
-        /* { MODKEY,                       XK_F4,         spawn,      SHCMD("") }, */
-        /* { MODKEY,                       XK_F5,         spawn,      SHCMD("") }, */
-        /* { MODKEY,                       XK_F6,         spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERMINAL, "-e", "pulsemixer", NULL} } },
+        { MODKEY,                       XK_F4,         spawn,      SHCMD("thewire") },
+        { MODKEY,                       XK_F5,         spawn,      {.v = (char const*[]){TERMINAL, "-e", "nmtui", NULL} } },
+        { MODKEY,                       XK_F6,         spawn,      SHCMD("recorder") },
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
         { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
