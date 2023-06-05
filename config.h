@@ -173,12 +173,12 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("") }, */
-        { MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +2 } },
-        { MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -2 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	/* { MODKEY|ShiftMask,             XK_i,          spawn,      SHCMD("") }, */
-	/* { MODKEY,                       XK_o,          spawn,      SHCMD("") }, */
-	/* { MODKEY|ShiftMask,             XK_o,          spawn,      SHCMD("") }, */
+        /* { MODKEY,                       XK_u,      spawn,          SHCMD("") }, */
+        /* { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("") }, */
+	/* { MODKEY,                       XK_i,      spawn,          SHCMD("") }, */
+	/* { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("") }, */
+	/* { MODKEY,                       XK_o,      spawn,          SHCMD("") }, */
+	/* { MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texfind") },
 	/* { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
@@ -188,11 +188,11 @@ static Key keys[] = {
         /* { MODKEY,                       XK_backslash,            spawn,     SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_backslash,            spawn,     SHCMD("") }, */
 
-        /* { MODKEY,                       XK_a,      spawn,          SHCMD("") }, */
+        { MODKEY,                       XK_a,      incnmaster,     {.i = +1 } },
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_s,      togglesticky,   {0} },
-	/* { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("") }, */
-	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
+	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -202,8 +202,10 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_h,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
     	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -2 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
     	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +2 } },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	/* { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_semicolon,            spawn,     SHCMD("") }, */
@@ -216,7 +218,7 @@ static Key keys[] = {
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
-        { MODKEY,                       XK_x,      spawn,          SHCMD("sw -s") },
+        { MODKEY,                       XK_x,      spawn,          SHCMD("setwp -s") },
 	/* { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
