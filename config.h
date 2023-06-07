@@ -68,17 +68,22 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
+
 	{ "[@]",      spiral },
 	{ "[\\]",     dwindle },
+
 	{ "H[]",      deck },
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
+
 	{ "HHH",      grid },
 	{ "###",      nrowgrid },
 	{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
+
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
@@ -170,9 +175,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	/* { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_y,      spawn,          SHCMD("") }, */
-        /* { MODKEY|ShiftMask,             XK_y,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
+        { MODKEY,                       XK_y,      setlayout,      {.v = &layouts[10]} },
+        { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[11]} },
         /* { MODKEY,                       XK_u,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_u,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_i,      spawn,          SHCMD("") }, */
@@ -192,8 +197,8 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
+	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
     	{ MODKEY|Mod4Mask,              XK_g,      togglegaps,     {0} },
@@ -213,7 +218,7 @@ static Key keys[] = {
         { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "120x38" } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "138x38" } } },
 	/* { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("") }, */
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
@@ -265,7 +270,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -mom ~/.local/share/cios.mom -Tpdf | zathura -") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
         { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERMINAL, "-e", "pulsemixer", NULL} } },
-        { MODKEY,                       XK_F4,         spawn,      SHCMD("thewire") },
+        { MODKEY,                       XK_F4,         spawn,      SHCMD("selectdisplay") },
         { MODKEY,                       XK_F5,         spawn,      {.v = (char const*[]){TERMINAL, "-e", "nmtui", NULL} } },
         { MODKEY,                       XK_F6,         spawn,      SHCMD("recorder") },
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
