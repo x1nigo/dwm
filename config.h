@@ -281,7 +281,7 @@ static Key keys[] = {
         /* { MODKEY,                       XK_F12,        spawn,      SHCMD("") }, */
 
 	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
-	{ 0,               XK_Print,      spawn,         SHCMD("deadshot") },
+	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
 };
 
 /* button definitions */
