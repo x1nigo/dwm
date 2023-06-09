@@ -172,7 +172,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "lfrun"} } },
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {1} },
+	/* { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
@@ -278,7 +278,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
         { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
         { MODKEY,                       XK_F11,        spawn,      SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
-        /* { MODKEY,                       XK_F12,        spawn,      SHCMD("") }, */
+        { MODKEY,                       XK_F12,        quit,       {1} },
 
 	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
 	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
