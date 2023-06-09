@@ -240,13 +240,13 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  spawn,          {.v = micdowncmd } },
 	/* { MODKEY|ControlMask,           XK_comma,  spawn,          SHCMD("") }, */
-	/* { MODKEY|ShiftMask,             XK_comma,  spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, spawn,          {.v = micupcmd } },
 	/* { MODKEY|ControlMask,           XK_period, spawn,          SHCMD("") }, */
-	/* { MODKEY|ShiftMask,             XK_period, spawn,          SHCMD("") }, */
         /* { MODKEY,                       XK_slash,  spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_slash,  spawn,          SHCMD("") }, */
+        { MODKEY|ShiftMask,             XK_slash,  spawn,          {.v = micmutecmd } },
         { MODKEY,                       XK_Left,   focusmon,       {.i = -1 } },
         { MODKEY|ShiftMask,             XK_Left,   tagmon,         {.i = -1 } },
         { MODKEY,                       XK_Right,  focusmon,       {.i = +1 } },
@@ -280,7 +280,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F11,        spawn,      SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
         { MODKEY,                       XK_F12,        quit,       {1} },
 
-	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
+	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 -p 'Insert Bookmark:' | cut -d' ' -f1)") },
 	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
 };
 
