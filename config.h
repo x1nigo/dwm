@@ -103,9 +103,9 @@ static const Layout layouts[] = {
 static const char *volupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
 static const char *voldowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SINK@ 0; kill -44 $(pidof dwmblocks)", NULL };
 static const char *mutecmd[]        = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)", NULL };
-static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
-static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -35 $(pidof dwmblocks)", NULL };
-static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -35 $(pidof dwmblocks)", NULL };
+static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -45 $(pidof dwmblocks)", NULL };
+static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -45 $(pidof dwmblocks)", NULL };
+static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -45 $(pidof dwmblocks)", NULL };
 
 static const char *blightupcmd[]    = { "sh", "-c", "blight inc ; kill -46 $(pidof dwmblocks)", NULL };
 static const char *blightdowncmd[]  = { "sh", "-c", "blight dec ; kill -46 $(pidof dwmblocks)", NULL };
