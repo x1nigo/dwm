@@ -213,7 +213,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +2 } },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	/* { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_semicolon,            spawn,     SHCMD("") }, */
+        { MODKEY,                       XK_semicolon,            spawn,     SHCMD("notetaker") },
         /* { MODKEY|ShiftMask,             XK_semicolon,            spawn,     SHCMD("") }, */
         { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
