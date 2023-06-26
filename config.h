@@ -280,7 +280,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F11,        spawn,      SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
         { MODKEY,                       XK_F12,        quit,       {1} },
 
-	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 -p 'Insert Bookmark:' | cut -d' ' -f1)") },
+	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
 	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
 };
 
