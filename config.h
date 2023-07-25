@@ -218,7 +218,7 @@ static Key keys[] = {
         { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "138x38" } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "108x50" } } },
 	/* { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("") }, */
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
