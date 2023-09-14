@@ -223,7 +223,7 @@ static Key keys[] = {
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
         /* { MODKEY|ShiftMask,             XK_z,      spawn,          SHCMD("") }, */
-        { MODKEY,                       XK_x,      spawn,          SHCMD("setwp -s") },
+        { MODKEY,                       XK_x,      spawn,          SHCMD("setbg -s") },
 	/* { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
