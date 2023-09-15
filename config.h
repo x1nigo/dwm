@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "st-256color"
 #define TERMINAL "st"
-#define BROWSER "librewolf"
+#define BROWSER "firefox"
 #define STATUSBAR "dwmblocks"
 #define SESSION_FILE "/tmp/dwm-session"
 
@@ -107,8 +107,8 @@ static const char *micupcmd[]       = { "sh", "-c", "wpctl set-volume @DEFAULT_A
 static const char *micdowncmd[]     = { "sh", "-c", "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ 0; kill -45 $(pidof dwmblocks)", NULL };
 static const char *micmutecmd[]     = { "sh", "-c", "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -45 $(pidof dwmblocks)", NULL };
 
-static const char *blightupcmd[]    = { "sh", "-c", "blight inc ; kill -46 $(pidof dwmblocks)", NULL };
-static const char *blightdowncmd[]  = { "sh", "-c", "blight dec ; kill -46 $(pidof dwmblocks)", NULL };
+static const char *blightupcmd[]    = { "sh", "-c", "xbacklight -inc 5; kill -46 $(pidof dwmblocks)", NULL };
+static const char *blightdowncmd[]  = { "sh", "-c", "xbacklight -dec 5; kill -46 $(pidof dwmblocks)", NULL };
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
