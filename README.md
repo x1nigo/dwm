@@ -8,6 +8,7 @@ This particular build is meant to be used in conjunction with the other suckless
 - [alpha](https://dwm.suckless.org/patches/alpha/) (transparency and fixes weird borders)
 - [alwayscenter](https://dwm.suckless.org/patches/alwayscenter/) (floating windows spawn at the center)
 - [cyclelayouts](https://dwm.suckless.org/patches/cyclelayouts/) (keybindings for switching between multiple layouts)
+- [fancybar](https://dwm.suckless.org/patches/fancybar/) (titlebar displays all windows in given tag instead of just the focused window)
 - [movestack](https://dwm.suckless.org/patches/movestack/) (allows moving of windows up/down the stack)
 - [pertag](https://dwm.suckless.org/patches/pertag/) (different layout per tag)
 - [removeborder](https://dwm.suckless.org/patches/removeborder/) (removes border for monocle layout)
