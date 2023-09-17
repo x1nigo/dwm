@@ -18,6 +18,8 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
+static int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static int vertpadbar         = 2;        /* vertical padding for statusbar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true", "Noto Mono Nerd Font:size=9:antialias=true:autohint=true" };
 static char normbgcolor[]           = "#222222";
@@ -41,7 +43,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "  ", " 󰢩 ", "  ", "  ", " 󰨜 ", "  ", "  ", " 󰌢 ", "  " };
+static const char *tags[] = { "", "󰢩", "", "", "󰨜", "", "", "󰌢", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -130,6 +132,8 @@ static const char *blightdowncmd[]  = { "sh", "-c", "xbacklight -dec 5; kill -46
  		{ "topbar",          	INTEGER, &topbar },
  		{ "nmaster",          	INTEGER, &nmaster },
  		{ "resizehints",       	INTEGER, &resizehints },
+		{ "horizpadbar",        INTEGER, &horizpadbar },
+		{ "vertpadbar",         INTEGER, &vertpadbar },
  		{ "mfact",      	FLOAT,   &mfact },
 		{ "gappih",             INTEGER, &gappih },
 		{ "gappiv",             INTEGER, &gappiv },
