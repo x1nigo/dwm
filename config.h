@@ -22,12 +22,12 @@ static int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static int vertpadbar         = 2;        /* vertical padding for statusbar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
+static char normbgcolor[]           = "#1d2021";
+static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#ebdbb2";
-static char selfgcolor[]            = "#ebdbb2";
-static char selbordercolor[]        = "#005577";
-static char selbgcolor[]            = "#005577";
+static char selfgcolor[]            = "#ff8700";
+static char selbordercolor[]        = "#700000";
+static char selbgcolor[]            = "#1d2021";
 static const unsigned int baralpha = 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
