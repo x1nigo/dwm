@@ -22,12 +22,12 @@ static int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static int vertpadbar         = 2;        /* vertical padding for statusbar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static char normbgcolor[]           = "#1d2021";
-static char normbordercolor[]       = "#222222";
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#ebdbb2";
-static char selfgcolor[]            = "#ff8700";
+static char selfgcolor[]            = "#ebdbb2";
 static char selbordercolor[]        = "#700000";
-static char selbgcolor[]            = "#1d2021";
+static char selbgcolor[]            = "#005577";
 static const unsigned int baralpha = 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
@@ -284,7 +284,7 @@ static Key keys[] = {
         { MODKEY,                       XK_F11,        spawn,      SHCMD("mpv --untimed --no-cache --no-osc --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
         { MODKEY,                       XK_F12,        quit,       {1} },
 
-	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 | cut -d' ' -f1)") },
+	{ MODKEY,          XK_Insert,     spawn,         SHCMD("xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 -p 'Insert:' | cut -d' ' -f1)") },
 	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
 };
 
