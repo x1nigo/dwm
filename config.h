@@ -18,16 +18,14 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static int vertpadbar         = 2;        /* vertical padding for statusbar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static char normbgcolor[]           = "#222222";
-static char normbordercolor[]       = "#444444";
+static char normbgcolor[]           = "#1d2021";
+static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#ebdbb2";
 static char selfgcolor[]            = "#ebdbb2";
-static char selbordercolor[]        = "#700000";
-static char selbgcolor[]            = "#005577";
+static char selbordercolor[]        = "#500000";
+static char selbgcolor[]            = "#002a2c";
 static const unsigned int baralpha = 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
@@ -131,8 +129,6 @@ static const char *blightdowncmd[]  = { "sh", "-c", "xbacklight -dec 5; kill -46
  		{ "topbar",          	INTEGER, &topbar },
  		{ "nmaster",          	INTEGER, &nmaster },
  		{ "resizehints",       	INTEGER, &resizehints },
-		{ "horizpadbar",        INTEGER, &horizpadbar },
-		{ "vertpadbar",         INTEGER, &vertpadbar },
  		{ "mfact",      	FLOAT,   &mfact },
 		{ "gappih",             INTEGER, &gappih },
 		{ "gappiv",             INTEGER, &gappiv },
