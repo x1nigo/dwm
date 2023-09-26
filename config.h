@@ -172,7 +172,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "lfrun"} } },
-	/* { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("") }, */
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "fff"} } },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
@@ -230,9 +230,9 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_c,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
-        /* { MODKEY,                       XK_b,      spawn,          SHCMD("") }, */
+        { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
-        { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("bookmarker") },
+        /* { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "newsboat"} } },
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("") }, */
