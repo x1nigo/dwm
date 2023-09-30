@@ -4,7 +4,6 @@
 #define TERMCLASS "st-256color"
 #define TERMINAL "st"
 #define BROWSER "firefox"
-#define STATUSBAR "dwmblocks"
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
@@ -18,6 +17,8 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
+static const int vertpad      = 7;       /* vertical padding of bar */
+static const int sidepad      = 7;       /* horizontal padding of bar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static char normbgcolor[]           = "#1d2021";
@@ -26,7 +27,7 @@ static char normfgcolor[]           = "#ebdbb2";
 static char selfgcolor[]            = "#ebdbb2";
 static char selbordercolor[]        = "#500000";
 static char selbgcolor[]            = "#002a2c";
-static const unsigned int baralpha = 0xef;
+static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -40,7 +41,8 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "🦊", "🪛", "📚", "👻", "🤖", "💰", "💵", "🐧", "💀" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -197,7 +199,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 12") },
 	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -291,11 +293,6 @@ static Button buttons[] = {
         { ClkLtSymbol,          0,              Button3,        setlayout,      {0} },
         { ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-        { ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
-        { ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
-        { ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
-        { ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
-        { ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 5} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },

@@ -205,7 +205,6 @@ static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
 static long getstate(Window w);
-static pid_t getstatusbarpid();
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
@@ -241,7 +240,6 @@ static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void sigchld(int unused);
-static void sigstatusbar(const Arg *arg);
 static void sighup(int unused);
 static void sigterm(int unused);
 static void spawn(const Arg *arg);
@@ -286,13 +284,12 @@ static pid_t winpid(Window w);
 /* variables */
 static const char broken[] = "broken";
 static char stext[1024];
-static int statusw;
-static int statussig;
-static pid_t statuspid = -1;
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
 static int bh, blw = 0;      /* bar geometry */
 static int lrpad;            /* sum of left and right padding for text */
+static int vp;               /* vertical padding for bar */
+static int sp;               /* side padding for bar */
 static int (*xerrorxlib)(Display *, XErrorEvent *);
 static unsigned int numlockmask = 0;
 static void (*handler[LASTEvent]) (XEvent *) = {
@@ -541,7 +538,6 @@ buttonpress(XEvent *e)
 	Client *c;
 	Monitor *m;
 	XButtonPressedEvent *ev = &e->xbutton;
-	char *text, *s, ch;
 
 	click = ClkRootWin;
 	/* focus monitor if necessary */
@@ -566,23 +562,9 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
-        else if (ev->x > selmon->ww - statusw) {
-			x = selmon->ww - statusw;
+ 		else if (ev->x > selmon->ww - (int)TEXTW(stext))
 			click = ClkStatusText;
-            statussig = 0;
-            for (text = s = stext; *s && x <= ev->x; s++) {
-                if ((unsigned char)(*s) < ' ') {
-                    ch = *s;
-                    *s = '\0';
-                    x += TEXTW(text) - lrpad;
-                    *s = ch;
-                    text = s + 1;
-                    if (x >= ev->x)
-                        break;
-                    statussig = ch;
-                }
-            }
-        } else
+		else
 			click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
@@ -713,7 +695,7 @@ configurenotify(XEvent *e)
 				for (c = m->clients; c; c = c->next)
 					if (c->isfullscreen)
 						resizeclient(c, m->mx, m->my, m->mw, m->mh);
-				XMoveResizeWindow(dpy, m->barwin, m->wx, m->by, m->ww, bh);
+				XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, m->ww -  2 * sp, bh);
 			}
 			focus(NULL);
 			arrange(NULL);
@@ -891,26 +873,9 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		char *text, *s, ch;
 		drw_setscheme(drw, scheme[SchemeNorm]);
  		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
- 		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
-
-		x = 0;
-		for (text = s = stext; *s; s++) {
-			if ((unsigned char)(*s) < ' ') {
-				ch = *s;
-				*s = '\0';
-				tw = TEXTW(text) - lrpad;
-				drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
-				x += tw;
-				*s = ch;
-				text = s + 1;
-			}
-		}
-		tw = TEXTW(text) - lrpad + 2;
-		drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
-		tw = statusw;
+ 		drw_text(drw, m->ww - tw - 2 * sp, 0, tw, bh, 0, stext, 0);
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -934,13 +899,17 @@ drawbar(Monitor *m)
 
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
+             /* fix overflow when window name is bigger than window width */
+ 			int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
+ 			/* make sure name will not overlap on tags even when it is very long */
+ 			mid = mid >= lrpad / 2 ? mid : lrpad / 2;
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+			drw_text(drw, x, 0, w - 2 * sp, bh, mid, m->sel->name, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
+			drw_rect(drw, x, 0, w - 2 * sp, bh, 1, 1);
 		}
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
@@ -1073,30 +1042,6 @@ getatomprop(Client *c, Atom prop)
 		XFree(p);
 	}
 	return atom;
-}
-
-pid_t
-getstatusbarpid()
-{
-	char buf[32], *str = buf, *c;
-	FILE *fp;
-
-	if (statuspid > 0) {
-		snprintf(buf, sizeof(buf), "/proc/%u/cmdline", statuspid);
-		if ((fp = fopen(buf, "r"))) {
-			fgets(buf, sizeof(buf), fp);
-			while ((c = strchr(str, '/')))
-				str = c + 1;
-			fclose(fp);
-			if (!strcmp(str, STATUSBAR))
-				return statuspid;
-		}
-	}
-	if (!(fp = popen("pidof -s "STATUSBAR, "r")))
-		return -1;
-	fgets(buf, sizeof(buf), fp);
-	pclose(fp);
-	return strtol(buf, NULL, 10);
 }
 
 int
@@ -1868,7 +1813,10 @@ setup(void)
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
 	bh = user_bh ? user_bh : drw->fonts->h + 2;
+ 	sp = sidepad;
+ 	vp = (topbar == 1) ? vertpad : - vertpad;
 	updategeom();
+
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
 	wmatom[WMProtocols] = XInternAtom(dpy, "WM_PROTOCOLS", False);
@@ -1974,20 +1922,6 @@ sigterm(int unused)
 }
 
 void
-sigstatusbar(const Arg *arg)
-{
-	union sigval sv;
-
-	if (!statussig)
-		return;
-	sv.sival_int = arg->i;
-	if ((statuspid = getstatusbarpid()) <= 0)
-		return;
-
-	sigqueue(statuspid, SIGRTMIN+statussig, sv);
-}
-
-void
 spawn(const Arg *arg)
 {
 	if (fork() == 0) {
@@ -2024,7 +1958,7 @@ togglebar(const Arg *arg)
 {
 	selmon->showbar = selmon->pertag->showbars[selmon->pertag->curtag] = !selmon->showbar;
 	updatebarpos(selmon);
-	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx + sp, selmon->by + vp, selmon->ww - 2 * sp, bh);
 	arrange(selmon);
 }
 
@@ -2193,7 +2127,7 @@ updatebars(void)
 	for (m = mons; m; m = m->next) {
 		if (m->barwin)
 			continue;
-		m->barwin = XCreateWindow(dpy, root, m->wx, m->by, m->ww, bh, 0, depth,
+		m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by +vp, m->ww - 2 * sp, bh, 0, depth,
 		                          InputOutput, visual,
 		                          CWOverrideRedirect|CWBackPixel|CWBorderPixel|CWColormap|CWEventMask, &wa);
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
@@ -2208,11 +2142,11 @@ updatebarpos(Monitor *m)
 	m->wy = m->my;
 	m->wh = m->mh;
 	if (m->showbar) {
-		m->wh -= bh;
-		m->by = m->topbar ? m->wy : m->wy + m->wh;
-		m->wy = m->topbar ? m->wy + bh : m->wy;
+		m->wh = m->wh - vertpad - bh;
+		m->by = m->topbar ? m->wy : m->wy + m->wh + vertpad;
+		m->wy = m->topbar ? m->wy + bh + vp : m->wy;
 	} else
-		m->by = -bh;
+		m->by = -bh - vp;
 }
 
 void
@@ -2370,25 +2304,8 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
-	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext))) {
+	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-		statusw = TEXTW(stext) - lrpad + 2;
-	} else {
-		char *text, *s, ch;
-
-		statusw  = 0;
-		for (text = s = stext; *s; s++) {
-			if ((unsigned char)(*s) < ' ') {
-				ch = *s;
-				*s = '\0';
-				statusw += TEXTW(text) - lrpad;
-				*s = ch;
-				text = s + 1;
-			}
-		}
-		statusw += TEXTW(text) - lrpad + 2;
-
-	}
 	drawbar(selmon);
 }
 
