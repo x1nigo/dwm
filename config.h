@@ -17,8 +17,8 @@ static int smartgaps          = 0;        /* 1 means no outer gap when there is 
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad      = 7;       /* vertical padding of bar */
-static const int sidepad      = 7;       /* horizontal padding of bar */
+static int vertpad            = 7;       /* vertical padding of bar */
+static int sidepad            = 7;       /* horizontal padding of bar */
 static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static char normbgcolor[]           = "#1d2021";
@@ -42,7 +42,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "🦊", "🪛", "📚", "👻", "🤖", "💰", "💵", "🐧", "💀" };
+static const char *tags[] = { "🦊", "🎯", "📚", "👻", "🤖", "💰", "💵", "🐧", "💀" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -50,7 +50,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
     /* class            instance      title           tags mask  isfloating  isterminal  noswallow  monitor */
-    { "Gimp",           NULL,         NULL,           0,         0,          0,           0,        -1 },
     { BROWSER,          NULL,         NULL,           0,         0,          0,          -1,        -1 },
     { TERMCLASS,        NULL,         NULL,           0,         0,          1,           0,        -1 },
     { TERMCLASS,        "termfloat",     NULL,           0,         1,          1,           0,        -1 },
@@ -131,11 +130,14 @@ static const char *blightdowncmd[]  = { "sh", "-c", "xbacklight -dec 5; kill -46
  		{ "topbar",          	INTEGER, &topbar },
  		{ "nmaster",          	INTEGER, &nmaster },
  		{ "resizehints",       	INTEGER, &resizehints },
+		{ "user_bh",            INTEGER, &user_bh },
  		{ "mfact",      	FLOAT,   &mfact },
 		{ "gappih",             INTEGER, &gappih },
 		{ "gappiv",             INTEGER, &gappiv },
 		{ "gappoh",             INTEGER, &gappoh },
 		{ "gappov",             INTEGER, &gappov },
+		{ "vertpad",            INTEGER, &vertpad },
+		{ "sidepad",            INTEGER, &sidepad },
 };
 
 
@@ -199,7 +201,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 12") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -269,7 +271,7 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("keyblight inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("keyblight dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -mom ~/.local/share/cios.mom -Tpdf | zathura -") },
+        { MODKEY,                       XK_F1,         spawn,      SHCMD("groff -mom ~/.local/share/keybindings.mom -Tpdf | zathura -") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
         { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERMINAL, "-e", "pulsemixer", NULL} } },
         { MODKEY,                       XK_F4,         spawn,      SHCMD("selectdisplay") },
