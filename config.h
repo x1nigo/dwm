@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMCLASS "st-256color"
+#define TERMCLASS "St"
 #define TERMINAL "st"
 #define BROWSER "firefox"
 #define SESSION_FILE "/tmp/dwm-session"
