@@ -9,17 +9,14 @@
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
-static unsigned int gappih    = 7;       /* horiz inner gap between windows */
-static unsigned int gappiv    = 7;       /* vert inner gap between windows */
-static unsigned int gappoh    = 7;       /* horiz outer gap between windows and screen edge */
-static unsigned int gappov    = 7;       /* vert outer gap between windows and screen edge */
+static unsigned int gappih    = 10;       /* horiz inner gap between windows */
+static unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static int vertpad            = 7;       /* vertical padding of bar */
-static int sidepad            = 7;       /* horizontal padding of bar */
-static int user_bh            = 0;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static char normbgcolor[]           = "#1d2021";
 static char normbordercolor[]       = "#222222";
@@ -52,7 +49,7 @@ static const Rule rules[] = {
     /* class            instance      title           tags mask  isfloating  isterminal  noswallow  monitor */
     { BROWSER,          NULL,         NULL,           0,         0,          0,          -1,        -1 },
     { TERMCLASS,        NULL,         NULL,           0,         0,          1,           0,        -1 },
-    { TERMCLASS,        "termfloat",     NULL,           0,         1,          1,           0,        -1 },
+    { TERMCLASS,        "termfloat",  NULL,           0,         1,          1,           0,        -1 },
     { NULL,             NULL,         "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -125,19 +122,10 @@ static const char *blightdowncmd[]  = { "sh", "-c", "xbacklight -dec 5; kill -46
  		{ "selbordercolor",     STRING,  &selbordercolor },
  		{ "selfgcolor",         STRING,  &selfgcolor },
  		{ "borderpx",          	INTEGER, &borderpx },
- 		{ "snap",          	INTEGER, &snap },
- 		{ "showbar",          	INTEGER, &showbar },
- 		{ "topbar",          	INTEGER, &topbar },
- 		{ "nmaster",          	INTEGER, &nmaster },
- 		{ "resizehints",       	INTEGER, &resizehints },
-		{ "user_bh",            INTEGER, &user_bh },
- 		{ "mfact",      	FLOAT,   &mfact },
 		{ "gappih",             INTEGER, &gappih },
 		{ "gappiv",             INTEGER, &gappiv },
 		{ "gappoh",             INTEGER, &gappoh },
 		{ "gappov",             INTEGER, &gappov },
-		{ "vertpad",            INTEGER, &vertpad },
-		{ "sidepad",            INTEGER, &sidepad },
 };
 
 
