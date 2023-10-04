@@ -4,6 +4,7 @@
 #define TERMCLASS "St"
 #define TERMINAL "st"
 #define BROWSER "firefox"
+#define STATUSBAR "dwmblocks"
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
@@ -280,6 +281,14 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
+#ifndef __OpenBSD__
+ 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+ 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+ 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+ 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
+ 	{ ClkStatusText,        ShiftMask,      Button2,        sigstatusbar,   {.i = 5} },
+ 	{ ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 6} },
+#endif
         { ClkLtSymbol,          0,              Button3,        setlayout,      {0} },
         { ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
