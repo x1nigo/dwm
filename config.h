@@ -24,7 +24,7 @@ static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#eeeeee";
 static char selfgcolor[]            = "#0a0f14";
 static char selbordercolor[]        = "#500000";
-static char selbgcolor[]            = "#ff5555";
+static char selbgcolor[]            = "#1d2021";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
@@ -39,8 +39,8 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "🦊", "🎯", "📚", "👻", "🤖", "💰", "💵", "🐧", "💀" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "🦊", "🎯", "📚", "👻", "🤖", "💰", "💵", "🐧", "💀" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -190,7 +190,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 20 -z 800") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 30 -g 5 -z 800") },
 	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
