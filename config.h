@@ -19,12 +19,12 @@ static int swallowfloating    = 0;        /* 1 means swallow floating windows by
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static char normbgcolor[]           = "#1d2021";
+static char normbgcolor[]           = "#18181b";
 static char normbordercolor[]       = "#222222";
 static char normfgcolor[]           = "#eeeeee";
 static char selfgcolor[]            = "#0a0f14";
-static char selbordercolor[]        = "#500000";
-static char selbgcolor[]            = "#1d2021";
+static char selbordercolor[]        = "#eeeeee";
+static char selbgcolor[]            = "#18181b";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3]      = {
