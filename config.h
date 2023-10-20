@@ -8,7 +8,7 @@
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 7;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 7;       /* vert inner gap between windows */
@@ -23,7 +23,7 @@ static const char normbgcolor[]           = "#1d2021";
 static const char normbordercolor[]       = "#282c34";
 static const char normfgcolor[]           = "#d7d7d7";
 static const char selfgcolor[]            = "#d7d7d7";
-static const char selbordercolor[]        = "#500000";
+static const char selbordercolor[]        = "#a9a1e1";
 static const char selbgcolor[]            = "#1d2021";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
