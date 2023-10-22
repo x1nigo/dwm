@@ -191,7 +191,10 @@ static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
 static long getstate(Window w);
+#ifndef __OpenBSD__
 static pid_t getstatusbarpid();
+static void sigstatusbar(const Arg *arg);
+#endif
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
 static void grabkeys(void);
@@ -227,9 +230,6 @@ static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
 static void sigchld(int unused);
-#ifndef __OpenBSD__
-static void sigstatusbar(const Arg *arg);
-#endif
 static void sighup(int unused);
 static void sigterm(int unused);
 static void spawn(const Arg *arg);
@@ -529,7 +529,9 @@ buttonpress(XEvent *e)
 	Client *c;
 	Monitor *m;
 	XButtonPressedEvent *ev = &e->xbutton;
-	char *text, *s, ch;
+#ifndef __OpenBSD__
+ 	char *text, *s, ch;
+#endif
 
 	click = ClkRootWin;
 	/* focus monitor if necessary */
@@ -554,9 +556,18 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + blw)
 			click = ClkLtSymbol;
+#ifdef __OpenBSD__
+ 		else if (ev->x > selmon->ww - (int)TEXTW(stext))
+#endif
+#ifndef __OpenBSD__
  		else if (ev->x > selmon->ww - statusw) {
  			x = selmon->ww - statusw;
+#endif
 			click = ClkStatusText;
+#ifdef __OpenBSD__
+		else
+#endif
+#ifndef __OpenBSD__
  			statussig = 0;
  			for (text = s = stext; *s && x <= ev->x; s++) {
  				if ((unsigned char)(*s) < ' ') {
@@ -571,6 +582,7 @@ buttonpress(XEvent *e)
  				}
  			}
  		} else
+#endif
 			click = ClkWinTitle;
 	} else if ((c = wintoclient(ev->window))) {
 		focus(c);
@@ -879,9 +891,16 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
+#ifndef __OpenBSD__
  		char *text, *s, ch;
+#endif
 		drw_setscheme(drw, scheme[SchemeNorm]);
+#ifdef __OpenBSD__
+ 		tw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
+ 		drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);
+#endif
 
+#ifndef __OpenBSD__
  		x = 0;
  		for (text = s = stext; *s; s++) {
  			if ((unsigned char)(*s) < ' ') {
@@ -897,6 +916,7 @@ drawbar(Monitor *m)
  		tw = TEXTW(text) - lrpad + 2;
  		drw_text(drw, m->ww - statusw + x, 0, tw, bh, 0, text, 0);
  		tw = statusw;
+#endif
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -909,6 +929,7 @@ drawbar(Monitor *m)
  		/* Do not draw vacant tags */
  		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
  			continue;
+
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
@@ -2364,25 +2385,32 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
+#ifdef __OpenBSD__
+	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
+#endif
+#ifndef __OpenBSD__
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext))) {
+#endif
 		strcpy(stext, "dwm-"VERSION);
-		statusw = TEXTW(stext) - lrpad + 2;
-	} else {
-		char *text, *s, ch;
+#ifndef __OpenBSD__
+ 		statusw = TEXTW(stext) - lrpad + 2;
+ 	} else {
+ 		char *text, *s, ch;
 
-		statusw  = 0;
-		for (text = s = stext; *s; s++) {
-			if ((unsigned char)(*s) < ' ') {
-				ch = *s;
-				*s = '\0';
-				statusw += TEXTW(text) - lrpad;
-				*s = ch;
-				text = s + 1;
-			}
-		}
-		statusw += TEXTW(text) - lrpad + 2;
+ 		statusw  = 0;
+ 		for (text = s = stext; *s; s++) {
+ 			if ((unsigned char)(*s) < ' ') {
+ 				ch = *s;
+ 				*s = '\0';
+ 				statusw += TEXTW(text) - lrpad;
+ 				*s = ch;
+ 				text = s + 1;
+ 			}
+ 		}
+ 		statusw += TEXTW(text) - lrpad + 2;
 
-	}
+ 	}
+#endif
 	drawbar(selmon);
 }
 

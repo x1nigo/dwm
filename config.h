@@ -3,8 +3,7 @@
 /* Constants */
 #define TERMCLASS "st-256color"
 #define TERMINAL "st"
-#define BROWSER "surf"
-#define STATUSBAR "dwmblocks"
+#define BROWSER "firefox"
 #define SESSION_FILE "/tmp/dwm-session"
 
 /* appearance */
@@ -23,7 +22,7 @@ static const char normbgcolor[]           = "#1d2021";
 static const char normbordercolor[]       = "#282c34";
 static const char normfgcolor[]           = "#d7d7d7";
 static const char selfgcolor[]            = "#d7d7d7";
-static const char selbordercolor[]        = "#500000";
+static const char selbordercolor[]        = "#720000";
 static const char selbgcolor[]            = "#1d2021";
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -39,10 +38,7 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-/* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
-
-/* alternative tags */
-static const char *tags[] = { "🦊", "🎯", "📚", "🎴", "🤖", "💰", "💵", "🐧", "💀" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -195,7 +191,7 @@ static Key keys[] = {
         { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "128x38" } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "128x38", NULL } } },
 	/* { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("") }, */
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
