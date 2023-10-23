@@ -28,6 +28,12 @@ static const char normfgcolor[]           = "#d7d7d7";
 static const char selfgcolor[]            = "#d7d7d7";
 static const char selbordercolor[]        = "#500000";
 static const char selbgcolor[]            = "#1d2021";
+
+static const char occfgcolor[]            = "#458588";
+static const char occbgcolor[]            = "#1d2021";
+static const char ptagfgcolor[]            = "#ff5555";
+static const char ptagbgcolor[]            = "#757575";
+
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
