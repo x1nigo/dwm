@@ -14,12 +14,8 @@ This particular build is meant to be used in conjunction with the other suckless
 - [restartsig](https://dwm.suckless.org/patches/restartsig/) (allows dwm to restart its config)
 - [restoreafterrestart](https://dwm.suckless.org/patches/restoreafterrestart/) (restores tags of windows upon restart &ndash; to be used alongside `restartsig`)
 - [statuscmd](https://dwm.suckless.org/patches/statuscmd/) (clickable events in status bar)
-- [statuspadding](https://dwm.suckless.org/patches/statuspadding/) (adds options for padding in the status bar)
 - [swallow](https://dwm.suckless.org/patches/swallow/) (window swallowing)
 - [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/) (lots of options for gaps)
-
-## Requirements
-- `libxft-bgra` &ndash; since this build uses colored emojis and dwm (unpatched) doesn't allow this.
 
 ## References
 - For the original version, see http://dwm.suckless.org/.
