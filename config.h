@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMCLASS "st-256color"
+#define TERMCLASS "St"
 #define TERM "st"
 #define BROWSER "firefox"
 #define SESSION_FILE "/tmp/dwm-session"
@@ -25,9 +25,9 @@ static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:siz
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282c34";
 static const char normfgcolor[]     = "#d7d7d7";
-static const char selfgcolor[]      = "#1c1f24";
+static const char selfgcolor[]      = "#d7d7d7";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#ff5555";
+static const char selbgcolor[]      = "#280075";
 /* separate title colors */
 static const char tlfgcolor[]       = "#d7d7d7";
 static const char tlbgcolor[]       = "#1d2021";
