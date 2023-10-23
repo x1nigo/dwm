@@ -2,7 +2,7 @@
 
 /* Constants */
 #define TERMCLASS "st-256color"
-#define TERMINAL "st"
+#define TERM "st"
 #define BROWSER "firefox"
 #define SESSION_FILE "/tmp/dwm-session"
 
@@ -22,24 +22,24 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static const char normbgcolor[]           = "#1d2021";
-static const char normbordercolor[]       = "#282c34";
-static const char normfgcolor[]           = "#d7d7d7";
-static const char selfgcolor[]            = "#d7d7d7";
-static const char selbordercolor[]        = "#500000";
-static const char selbgcolor[]            = "#1d2021";
-
-static const char occfgcolor[]            = "#458588";
-static const char occbgcolor[]            = "#1d2021";
-static const char ptagfgcolor[]            = "#ff5555";
-static const char ptagbgcolor[]            = "#757575";
-
+static const char normbgcolor[]     = "#1d2021";
+static const char normbordercolor[] = "#282c34";
+static const char normfgcolor[]     = "#d7d7d7";
+static const char selfgcolor[]      = "#1c1f24";
+static const char selbordercolor[]  = "#500000";
+static const char selbgcolor[]      = "#ff5555";
+/* separate title colors */
+static const char tlfgcolor[]       = "#d7d7d7";
+static const char tlbgcolor[]       = "#1d2021";
+static const char tlbordercolor[]   = "#1d2021";
+/* transparency or opacity */
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-	[SchemeSel]  = { selfgcolor,  selbgcolor, selbordercolor   },
+	/*               fg             bg           border   */
+	[SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]    = { selfgcolor,  selbgcolor, selbordercolor   },
+ 	[SchemeTitle]  = { tlfgcolor,   tlbgcolor,  tlbordercolor    },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border     */
@@ -151,11 +151,11 @@ static Key keys[] = {
 	/* { MODKEY|ControlMask,           XK_q,      spawn,          SHCMD(""), */
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	/* { MODKEY|ShiftMask,             XK_w,      spawn,          SHCMD(""), */
-	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "neomutt"} } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERM, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "lfrun"} } },
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "fff"} } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lfrun"} } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
@@ -180,7 +180,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 30 -g 5 -z 800") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 30 -g 3 -z 800") },
 	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
@@ -198,10 +198,10 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_semicolon,            spawn,     SHCMD("notetaker") },
         /* { MODKEY|ShiftMask,             XK_semicolon,            spawn,     SHCMD("") }, */
-        { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERMINAL, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
+        { MODKEY,                       XK_apostrophe,           spawn,     {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
         /* { MODKEY|ShiftMask,             XK_apostrophe,           spawn,     SHCMD("") }, */
-	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERMINAL) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERMINAL, "-n", "termfloat", "-g", "128x38", NULL } } },
+	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
 	/* { MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD("") }, */
 
         /* { MODKEY,                       XK_z,      spawn,          SHCMD("") }, */
@@ -216,10 +216,10 @@ static Key keys[] = {
         { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
         /* { MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "newsboat"} } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", "newsboat"} } },
 	/* { MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_n,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_m,      spawn,          {.v = (const char*[]){TERMINAL, "-e", "ncmpcpp"} } },
+	{ MODKEY,                       XK_m,      spawn,          {.v = (const char*[]){TERM, "-e", "ncmpcpp"} } },
 	/* { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ControlMask,           XK_m,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_comma,  cyclelayout,    {.i = -1 } },
@@ -252,9 +252,9 @@ static Key keys[] = {
 
         { MODKEY,                       XK_F1,         spawn,      SHCMD("readme") },
         { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
-        { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERMINAL, "-e", "pulsemixer", NULL} } },
+        { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
         { MODKEY,                       XK_F4,         spawn,      SHCMD("selectdisplay") },
-        { MODKEY,                       XK_F5,         spawn,      {.v = (char const*[]){TERMINAL, "-e", "nmtui", NULL} } },
+        { MODKEY,                       XK_F5,         spawn,      {.v = (char const*[]){TERM, "-e", "nmtui", NULL} } },
         { MODKEY,                       XK_F6,         spawn,      SHCMD("recorder") },
         /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
         /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
@@ -279,7 +279,7 @@ static Button buttons[] = {
  	{ ClkStatusText,        ShiftMask,      Button2,        sigstatusbar,   {.i = 5} },
  	{ ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 6} },
 #endif
-        { ClkLtSymbol,          0,              Button3,        setlayout,      {0} },
+        { ClkLtSymbol,          0,              Button3,        spawn,          SHCMD(TERM) },
         { ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1 } },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
