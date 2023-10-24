@@ -180,7 +180,7 @@ static Key keys[] = {
         /* { MODKEY|ShiftMask,             XK_a,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_s,      togglesticky,   {0} },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -l 30 -g 3 -z 800") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	/* { MODKEY|ShiftMask,             XK_d,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
