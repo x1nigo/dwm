@@ -27,10 +27,10 @@ static const char normbordercolor[] = "#282c34";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#005577";
+static const char selbgcolor[]      = "#003557";
 /* separate title colors */
 static const char tlfgcolor[]       = "#d7d7d7";
-static const char tlbgcolor[]       = "#1d2021";
+static const char tlbgcolor[]       = "#003557";
 static const char tlbordercolor[]   = "#1d2021";
 /* transparency or opacity */
 static const unsigned int baralpha = 0xff;
