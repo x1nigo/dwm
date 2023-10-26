@@ -211,7 +211,7 @@ static Key keys[] = {
 	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_c,      spawn,          SHCMD("") }, */
-	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_v,      spawn,          SHCMD("vidmarker") },
 	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
@@ -250,21 +250,22 @@ static Key keys[] = {
 	{ 0,             XF86XK_KbdBrightnessUp,       spawn,      SHCMD("keyblight inc") },
 	{ 0,             XF86XK_KbdBrightnessDown,     spawn,      SHCMD("keyblight dec") },
 
-        { MODKEY,                       XK_F1,         spawn,      SHCMD("readme") },
-        { MODKEY,                       XK_F2,         spawn,      SHCMD("fontwizard") },
-        { MODKEY,                       XK_F3,         spawn,      {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
-        { MODKEY,                       XK_F4,         spawn,      SHCMD("selectdisplay") },
-        { MODKEY,                       XK_F5,         spawn,      {.v = (char const*[]){TERM, "-e", "nmtui", NULL} } },
-        { MODKEY,                       XK_F6,         spawn,      SHCMD("recorder") },
-        /* { MODKEY,                       XK_F7,         spawn,      SHCMD("") }, */
-        /* { MODKEY,                       XK_F8,         spawn,      SHCMD("") }, */
-        { MODKEY,                       XK_F9,         spawn,      SHCMD("mounter") },
-        { MODKEY,                       XK_F10,        spawn,      SHCMD("unmounter") },
-        { MODKEY,                       XK_F11,        spawn,      SHCMD("webcam") },
-        { MODKEY,                       XK_F12,        quit,       {1} },
+        { MODKEY,                   XK_F1,         spawn,      SHCMD("readme") },
+        { MODKEY,                   XK_F2,         spawn,      SHCMD("fontwizard") },
+        { MODKEY,                   XK_F3,         spawn,      {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
+        { MODKEY,                   XK_F4,         spawn,      SHCMD("selectdisplay") },
+        { MODKEY,                   XK_F5,         spawn,      {.v = (char const*[]){TERM, "-e", "nmtui", NULL} } },
+        { MODKEY,                   XK_F6,         spawn,      SHCMD("recorder") },
+        { MODKEY,                   XK_F7,         spawn,      SHCMD("vidscript") },
+        /* { MODKEY,                   XK_F8,         spawn,      SHCMD("") }, */
+        { MODKEY,                   XK_F9,         spawn,      SHCMD("mounter") },
+        { MODKEY,                   XK_F10,        spawn,      SHCMD("unmounter") },
+        { MODKEY,                   XK_F11,        spawn,      SHCMD("webcam") },
+        { MODKEY,                   XK_F12,        quit,       {1} },
 
-	{ MODKEY,          XK_Insert,     spawn,         SHCMD("inserter") },
-	{ 0,               XK_Print,      spawn,         SHCMD("printscreen") },
+	{ MODKEY,                   XK_Insert,     spawn,      SHCMD("inserter") },
+	/* { MODKEY|ShiftMask,         XK_Insert,     spawn,      SHCMD("") }, */
+	{ 0,                        XK_Print,      spawn,      SHCMD("printscreen") },
 };
 
 /* button definitions */
