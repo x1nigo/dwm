@@ -926,6 +926,7 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+
  		/* Do not draw vacant tags */
  		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
  			continue;
