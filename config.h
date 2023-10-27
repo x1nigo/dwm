@@ -22,8 +22,7 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10",
-	"NotoColorEmoji:size=8:antialias=true:autohint=true",
-	"Symbols Nerd Font Mono:size=8:antialias=true:autohint=true" };
+	"NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282c34";
 static const char normfgcolor[]     = "#d7d7d7";
