@@ -26,7 +26,7 @@ static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#757598";
+static const char selbordercolor[]  = "#757585";
 static const char selbgcolor[]      = "#0f2837";
 /* separate title colors */
 static const char tlfgcolor[]       = "#d7d7d7";
