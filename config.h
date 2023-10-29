@@ -23,14 +23,14 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#1d2021";
-static const char normbordercolor[] = "#282c34";
+static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#500000";
+static const char selbordercolor[]  = "#757598";
 static const char selbgcolor[]      = "#0f2837";
 /* separate title colors */
 static const char tlfgcolor[]       = "#d7d7d7";
-static const char tlbgcolor[]       = "#0f2837";
+static const char tlbgcolor[]       = "#500000";
 static const char tlbordercolor[]   = "#1d2021";
 /* transparency or opacity */
 static const unsigned int baralpha = 0xff;

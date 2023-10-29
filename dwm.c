@@ -890,7 +890,7 @@ drawbar(Monitor *m)
 		return;
 
 	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
+	if (m == selmon || 1) { /* status is only drawn on selected monitor */
 #ifndef __OpenBSD__
  		char *text, *s, ch;
 #endif
@@ -2382,6 +2382,7 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
+	Monitor* m;
 #ifdef __OpenBSD__
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 #endif
@@ -2408,7 +2409,8 @@ updatestatus(void)
 
  	}
 #endif
-	drawbar(selmon);
+ 	for(m = mons; m; m = m->next)
+ 		drawbar(m);
 }
 
 void
