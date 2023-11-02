@@ -22,12 +22,12 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static const char normbgcolor[]     = "#0a0f14";
+static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#d7d7d7";
-static const char selbgcolor[]      = "#121228";
+static const char selbordercolor[]  = "#757585";
+static const char selbgcolor[]      = "#0f2837";
 /* separate title colors */
 static const char tlfgcolor[]       = "#d7d7d7";
 static const char tlbgcolor[]       = "#500817";
