@@ -28,10 +28,6 @@ static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
 static const char selbordercolor[]  = "#500817";
 static const char selbgcolor[]      = "#1d2832";
-/* separate title colors */
-static const char tlfgcolor[]       = "#d7d7d7";
-static const char tlbgcolor[]       = "#1d2832";
-static const char tlbordercolor[]   = "#1d2021";
 /* transparency or opacity */
 static const unsigned int baralpha = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -39,7 +35,6 @@ static const char *colors[][3]      = {
 	/*               fg             bg           border   */
 	[SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]    = { selfgcolor,  selbgcolor, selbordercolor   },
- 	[SchemeTitle]  = { tlfgcolor,   tlbgcolor,  tlbordercolor    },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border     */
