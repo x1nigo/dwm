@@ -29,7 +29,7 @@ static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#1d2021";
+static const char selbgcolor[]      = "#0f2837";
 /* transparency or opacity */
 static const unsigned int baralpha    = 0xff;
 static const unsigned int borderalpha = OPAQUE;
@@ -147,8 +147,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERM, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
-	/* { MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("") }, */
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lf"} } },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
