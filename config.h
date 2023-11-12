@@ -28,7 +28,7 @@ static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#500000";
+static const char selbordercolor[]  = "#580000";
 static const char selbgcolor[]      = "#0f2837";
 /* transparency or opacity */
 static const unsigned int baralpha    = 0xff;
