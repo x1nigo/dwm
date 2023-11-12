@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chromium"
+#define BROWSER "librewolf"
 #define SESSION_FILE "/tmp/dwm-session"
 
 #ifndef __OpenBSD__
