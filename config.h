@@ -146,7 +146,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERM, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lf"} } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lfuz"} } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
