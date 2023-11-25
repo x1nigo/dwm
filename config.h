@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "librewolf"
+#define BROWSER "firefox"
 #define SESSION_FILE "/tmp/dwm-session"
 
 #ifndef __OpenBSD__
@@ -23,12 +23,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 2;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static const char normbgcolor[]     = "#1b1e1f";
+static const char normbgcolor[]     = "#181a1b";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#5b0000";
-static const char selbgcolor[]      = "#181a1b";
+static const char selbordercolor[]  = "#8b0000";
+static const char selbgcolor[]      = "#1b1e1f";
 /* transparency or opacity */
 static const unsigned int baralpha    = 0xff;
 static const unsigned int borderalpha = OPAQUE;
