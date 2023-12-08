@@ -11,7 +11,7 @@
 #endif
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -27,8 +27,8 @@ static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#5b0000";
-static const char selbgcolor[]      = "#121820";
+static const char selbordercolor[]  = "#5b2828";
+static const char selbgcolor[]      = "#5b2828";
 /* transparency or opacity */
 static const unsigned int baralpha    = 0xff;
 static const unsigned int borderalpha = OPAQUE;
