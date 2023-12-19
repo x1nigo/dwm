@@ -146,7 +146,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_e,      spawn,          {.v = (const char*[]){TERM, "-e", "neomutt"} } },
         /* { MODKEY|ShiftMask,             XK_e,      spawn,          SHCMD("") }, */
         /* { MODKEY|ControlMask,           XK_e,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lfuz"} } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lfx"} } },
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
         /* { MODKEY|ControlMask,           XK_r,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -159,7 +159,7 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,             XK_i,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_o,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_o,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("texfind") },
+	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	/* { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("") }, */
 	{ MODKEY,                       XK_bracketleft,          spawn,     {.v = blightdowncmd } },
 	/* { MODKEY|ShiftMask,             XK_bracketleft,          spawn,     SHCMD("") }, */
@@ -203,7 +203,7 @@ static Key keys[] = {
 	/* { MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("") }, */
 	/* { MODKEY,                       XK_c,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_c,      spawn,          SHCMD("") }, */
-	{ MODKEY,                       XK_v,      spawn,          SHCMD("vidmarker") },
+	/* { MODKEY,                       XK_v,      spawn,          SHCMD("") }, */
 	/* { MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("") }, */
         { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
@@ -248,7 +248,7 @@ static Key keys[] = {
         { MODKEY,                   XK_F4,         spawn,      SHCMD("selectdisplay") },
         { MODKEY,                   XK_F5,         spawn,      {.v = (char const*[]){TERM, "-e", "nmtui", NULL} } },
         { MODKEY,                   XK_F6,         spawn,      SHCMD("recorder") },
-        { MODKEY,                   XK_F7,         spawn,      SHCMD("vidscript") },
+        /* { MODKEY,                   XK_F7,         spawn,      SHCMD("") }, */
         /* { MODKEY,                   XK_F8,         spawn,      SHCMD("") }, */
         { MODKEY,                   XK_F9,         spawn,      SHCMD("mounter") },
         { MODKEY,                   XK_F10,        spawn,      SHCMD("unmounter") },
