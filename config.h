@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chromium"
+#define BROWSER "librewolf"
 #define SESSION_FILE "/tmp/dwm-session"
 
 #ifndef __OpenBSD__
@@ -11,7 +11,7 @@
 #endif
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
@@ -27,8 +27,8 @@ static const char normbgcolor[]     = "#121618";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
-static const char selbordercolor[]  = "#7a1812";
-static const char selbgcolor[]      = "#7a1812";
+static const char selbordercolor[]  = "#500000";
+static const char selbgcolor[]      = "#1d2021";
 /* transparency or opacity */
 static const unsigned int baralpha    = 0xff;
 static const unsigned int borderalpha = OPAQUE;
