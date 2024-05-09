@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "chrome"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -16,14 +16,14 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=10", "NotoMono Nerd Font:size=10:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#d7d7d7";
 static const char selfgcolor[]      = "#d7d7d7";
 static const char selbordercolor[]  = "#500000";
 static const char selbgcolor[]      = "#121618";
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg           bg           border   */
@@ -90,6 +90,7 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
@@ -102,6 +103,8 @@ static const Key keys[] = {
         { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_a,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_s,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -122,9 +125,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+ 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+ 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
         { MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("sysmenu") },
+        { MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
@@ -142,6 +148,7 @@ static const Key keys[] = {
         { MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
         { MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
 	{ MODKEY,                       XK_F12,    quit,           {0} },
+	{ 0,                            XK_Print,  spawn,          SHCMD("printscreen") },
 };
 
 /* button definitions */
