@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chrome"
+#define BROWSER "librewolf"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -90,6 +90,7 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#include <X11/XF86keysym.h>
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -112,11 +113,13 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
+
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
         { MODKEY,                       XK_y,      setlayout,      {.v = &layouts[10]} },
         { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[11]} },
+
         { MODKEY,                       XK_x,      spawn,          SHCMD("setbg -d") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -135,6 +138,13 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
+
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -146,7 +156,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
         { MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
         { MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
-        { MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer"} } },
+	{ MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
 	{ MODKEY,                       XK_F12,    quit,           {0} },
 	{ 0,                            XK_Print,  spawn,          SHCMD("printscreen") },
 };
