@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "librewolf"
+#define BROWSER "ungoogled-chromium"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -16,11 +16,11 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoMono Nerd Font:size=10:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=10:antialias=true:autohint=true", "NotoMono Nerd Font:size=10:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
-static const char normfgcolor[]     = "#d7d7d7";
-static const char selfgcolor[]      = "#d7d7d7";
+static const char normfgcolor[]     = "#ebdbb2";
+static const char selfgcolor[]      = "#ebdbb2";
 static const char selbordercolor[]  = "#500000";
 static const char selbgcolor[]      = "#121618";
 static const unsigned int baralpha = 0xf0;
@@ -31,8 +31,8 @@ static const char *colors[][3]        = {
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 static const unsigned int alphas[][3]      = {
-    /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+        /*               fg      bg        border*/
+        [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
@@ -62,9 +62,9 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+ 	{ "[@]",      spiral },    /* first entry is default */
 	{ "[M]",      monocle },
- 	{ "[@]",      spiral },
+	{ "[]=",      tile },
  	{ "[\\]",     dwindle },
  	{ "H[]",      deck },
  	{ "TTT",      bstack },
@@ -97,7 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fff"} } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "ranger", NULL } } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
@@ -138,13 +138,13 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
-
+#ifndef __OpenBSD__
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
-
+#endif
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
