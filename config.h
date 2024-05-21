@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "ungoogled-chromium"
+#define BROWSER "chromium"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -16,7 +16,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10:antialias=true:autohint=true", "NotoMono Nerd Font:size=10:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#ebdbb2";
@@ -97,7 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "ranger", NULL } } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "lf", NULL } } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
