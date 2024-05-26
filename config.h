@@ -97,7 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
-	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "shfm", NULL } } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "fm", NULL } } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
