@@ -3,14 +3,14 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chromium"
+#define BROWSER "firefox"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 12;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -101,7 +101,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
-        { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
+    { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -117,11 +117,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[5]} },
-        { MODKEY,                       XK_y,      setlayout,      {.v = &layouts[10]} },
-        { MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[11]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[10]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[11]} },
 
-        { MODKEY,                       XK_x,      spawn,          SHCMD("setwp -d") },
-        { MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setwp -x") },
+	{ MODKEY,                       XK_x,      spawn,          SHCMD("setwp -d") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setwp -x") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -129,23 +129,30 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
- 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+ 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
  	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-        { MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("sysmenu") },
-        { MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
 #ifndef __OpenBSD__
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; ref-bar") },
-	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle ; ref-bar") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ ; ref-bar") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ; ref-bar") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
+#endif
+
+#ifdef __FreeBSD__
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("mixer vol=+.05") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("mixer vol=-.05") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("backlight incr 5") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("backlight decr 5") },
 #endif
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -156,8 +163,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-        { MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
-        { MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
+    { MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
+    { MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer"} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
 	{ MODKEY,                       XK_F12,    quit,           {0} },
@@ -170,7 +177,7 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-        { ClkLtSymbol,          0,              Button3,        spawn,          SHCMD(TERM) },
+    { ClkLtSymbol,          0,              Button3,        spawn,          SHCMD(TERM) },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
