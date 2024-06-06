@@ -3,14 +3,14 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "chromium"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 12;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 16;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 30;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -20,15 +20,19 @@ static const char *fonts[]          = { "monospace:size=10:antialias=true:autohi
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ebdbb2";
+static const char selfgcolor[]      = "#000000";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#121618";
+static const char selbgcolor[]      = "#852828";
+static const char titlefgcolor[]      = "#ebdbb2";
+static const char titlebgcolor[]      = "#121618";
+static const char titlebordercolor[]  = "#1d2021";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg           bg           border   */
-	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+	[SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  },
+	[SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
 };
 static const unsigned int alphas[][3]      = {
         /*               fg      bg        border*/
@@ -101,7 +105,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
-    { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
+        { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -129,12 +133,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
- 	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
+ 	{ MODKEY|ControlMask,       	XK_comma,  cyclelayout,    {.i = -1 } },
  	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
+    { MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("sysmenu") },
-	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
+    { MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
@@ -147,12 +151,12 @@ static const Key keys[] = {
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
 #endif
-
-#ifdef __FreeBSD__
+#ifndef __FreeBSD__
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("mixer vol=+.05") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("mixer vol=-.05") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("backlight incr 5") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("backlight decr 5") },
+
 #endif
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -163,8 +167,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-    { MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
-    { MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
+	{ MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer"} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
 	{ MODKEY,                       XK_F12,    quit,           {0} },
@@ -177,7 +181,7 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-    { ClkLtSymbol,          0,              Button3,        spawn,          SHCMD(TERM) },
+	{ ClkLtSymbol,          0,              Button3,        spawn,          SHCMD(TERM) },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
