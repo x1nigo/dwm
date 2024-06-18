@@ -20,19 +20,15 @@ static const char *fonts[]          = { "monospace:size=10:antialias=true:autohi
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#000000";
+static const char selfgcolor[]      = "#ebdbb2";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#852828";
-static const char titlefgcolor[]      = "#ebdbb2";
-static const char titlebgcolor[]      = "#121618";
-static const char titlebordercolor[]  = "#1d2021";
+static const char selbgcolor[]      = "#121618";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*               fg           bg           border   */
 	[SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  },
-	[SchemeTitle] = { titlefgcolor, titlebgcolor, titlebordercolor },
 };
 static const unsigned int alphas[][3]      = {
         /*               fg      bg        border*/
