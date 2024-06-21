@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "ungoogled-chromium"
+#define BROWSER "firefox"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -16,13 +16,13 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:bold:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#1d2021";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#ebdbb2";
-static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#121618";
+static const char selbordercolor[]  = "#500";
+static const char selbgcolor[]      = "#008";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
@@ -32,7 +32,7 @@ static const char *colors[][3]        = {
 };
 static const unsigned int alphas[][3]      = {
         /*               fg      bg        border*/
-        [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
@@ -101,7 +101,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
-        { MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -131,19 +131,19 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
  	{ MODKEY|ControlMask,       	XK_comma,  cyclelayout,    {.i = -1 } },
  	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-        { MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("sysmenu") },
-        { MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 	{ MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ShiftMask,             XK_g,      defaultgaps,    {0} },
 #ifndef __OpenBSD__
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; ref-bar") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ ; ref-bar") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ; ref-bar") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
 #else
@@ -156,7 +156,6 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("mixer vol=-.05") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("backlight incr 5") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("backlight decr 5") },
-
 #endif
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
