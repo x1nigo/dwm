@@ -9,4 +9,4 @@
 - nomonocleborder
 - pertag
 - swallow
-- vanitygaps
+- uselessgap
