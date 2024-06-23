@@ -6,27 +6,27 @@
 #define BROWSER "ungoogled-chromium"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:bold:size=12:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
-static const char normbgcolor[]     = "#080808";
-static const char normbordercolor[] = "#080808";
-static const char normfgcolor[]     = "#808080";
+static const char *fonts[]          = { "monospace:bold:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char normbgcolor[]     = "#121212";
+static const char normbordercolor[] = "#1d2021";
+static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#000";
 static const char selbordercolor[]  = "#500";
-static const char selbgcolor[]      = "#800";
+static const char selbgcolor[]      = "#008";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
-	/*                fg           bg           border   */
+	/*                fg           bg           border */
 	[SchemeNorm]  = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]   = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 static const unsigned int alphas[][3]      = {
-    /*               fg      bg        border*/
+    /*               fg      bg        border */
 	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
