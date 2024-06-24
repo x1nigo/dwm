@@ -6,17 +6,17 @@
 #define BROWSER "ungoogled-chromium"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:bold:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#121212";
-static const char normbordercolor[] = "#1d2021";
+static const char normbordercolor[] = "#121212";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#000";
-static const char selbordercolor[]  = "#500";
+static const char selbordercolor[]  = "#1d2021";
 static const char selbgcolor[]      = "#008";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
@@ -78,7 +78,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", "sf", NULL } } },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("texhunter") },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
@@ -108,7 +107,6 @@ static const Key keys[] = {
  	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "monospace:size=16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
-	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("sysmenu") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 #ifndef __OpenBSD__
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; ref-bar") },
