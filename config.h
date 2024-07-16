@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "chromium"
 #define FILEMGR "fm"
 
 /* appearance */
@@ -18,8 +18,8 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
-static const char normbgcolor[]     = "#121212";
-static const char normbordercolor[] = "#1d2021";
+static const char normbgcolor[]     = "#111111";
+static const char normbordercolor[] = "#200";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#ebdbb2";
 static const char selbordercolor[]  = "#500";
@@ -131,7 +131,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
  	{ MODKEY|ControlMask,       	XK_comma,  cyclelayout,    {.i = -1 } },
  	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "ccal", "-l", NULL} } },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 #ifndef __OpenBSD__
@@ -139,8 +139,8 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ ; ref-bar") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ; ref-bar") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = (const char*[]){ "xbacklight", "-inc", "5", NULL } } },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = (const char*[]){ "xbacklight", "-dec", "5", NULL } } },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("xbacklight -inc 5 ; ref-bar") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("xbacklight -dec 5 ; ref-bar") },
 #else
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("ref-bar") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("ref-bar") },
