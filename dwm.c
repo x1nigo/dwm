@@ -227,6 +227,7 @@ static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
 static void togglebar(const Arg *arg);
+static void toggleborder(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
@@ -1433,8 +1434,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
 	wc.border_width = c->bw;
- 	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
- 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange)
+ 	if ((&monocle == c->mon->lt[c->mon->sellt]->arrange)
  	    && !c->isfullscreen && !c->isfloating) {
  		c->w = wc.width += c->bw * 2;
  		c->h = wc.height += c->bw * 2;
@@ -1837,6 +1837,13 @@ togglebar(const Arg *arg)
 	selmon->showbar = selmon->pertag->showbars[selmon->pertag->curtag] = !selmon->showbar;
 	updatebarpos(selmon);
 	XMoveResizeWindow(dpy, selmon->barwin, selmon->wx, selmon->by, selmon->ww, bh);
+	arrange(selmon);
+}
+
+void
+toggleborder(const Arg *arg)
+{
+	selmon->sel->bw = (selmon->sel->bw == borderpx ? 0 : borderpx);
 	arrange(selmon);
 }
 

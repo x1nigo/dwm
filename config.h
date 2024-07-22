@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chromium"
+#define BROWSER "firefox"
 #define FILEMGR "fm"
 
 /* appearance */
@@ -102,6 +102,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
+	{ MODKEY|Mod1Mask,              XK_b,      toggleborder,   {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
