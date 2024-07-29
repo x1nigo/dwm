@@ -59,7 +59,6 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-
 };
 
 /* key definitions */
@@ -100,12 +99,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_x,      spawn,          SHCMD("setwp -d") },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setwp -x") },
-
 	{ MODKEY|ControlMask,           XK_j,      setgaps,        {.i = -5 } },
 	{ MODKEY|ControlMask,           XK_k,      setgaps,        {.i = +5 } },
 	{ MODKEY|ControlMask,           XK_g,      setgaps,        {.i = GAP_RESET } },
 	{ MODKEY,                       XK_g,      setgaps,        {.i = GAP_TOGGLE } },
-
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
