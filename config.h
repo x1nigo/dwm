@@ -5,6 +5,7 @@
 #define TERM "st"
 #define BROWSER "firefox"
 #define FILEMGR "fm"
+#define AUTH "doas"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -15,10 +16,10 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
 static const char normbgcolor[]     = "#111111";
-static const char normbordercolor[] = "#200";
+static const char normbordercolor[] = "#222222";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#ebdbb2";
-static const char selbordercolor[]  = "#500";
+static const char selbordercolor[]  = "#500000";
 static const char selbgcolor[]      = "#121618";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
@@ -56,9 +57,10 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "H[]",      deck },    /* first entry is default */
+	{ "[]=",      tile },
 	{ "[M]",      monocle },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -96,7 +98,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_x,      spawn,          SHCMD("setwp -d") },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setwp -x") },
 	{ MODKEY|ControlMask,           XK_j,      setgaps,        {.i = -5 } },
@@ -110,22 +114,16 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
- 	{ MODKEY|ControlMask,       	XK_comma,  cyclelayout,    {.i = -1 } },
- 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 #ifndef __OpenBSD__
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ; ref-bar") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; ref-bar") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ ; ref-bar") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- ; ref-bar") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("doas xblight -i ; ref-bar") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("doas xblight -d ; ref-bar") },
-#else
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("ref-bar") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("ref-bar") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("ref-bar") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; ref-bar") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; ref-bar") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("doas xblight -i; ref-bar") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("doas xblight -d; ref-bar") },
 #endif
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

@@ -180,7 +180,7 @@ static void configure(Client *c);
 static void configurenotify(XEvent *e);
 static void configurerequest(XEvent *e);
 static Monitor *createmon(void);
-static void cyclelayout(const Arg *arg);
+static void deck(Monitor *m);
 static void destroynotify(XEvent *e);
 static void detach(Client *c);
 static void detachstack(Client *c);
@@ -772,23 +772,6 @@ createmon(void)
 }
 
 void
-cyclelayout(const Arg *arg) {
-	Layout *l;
-	for(l = (Layout *)layouts; l != selmon->lt[selmon->sellt]; l++);
-	if(arg->i > 0) {
-		if(l->symbol && (l + 1)->symbol)
-			setlayout(&((Arg) { .v = (l + 1) }));
-		else
-			setlayout(&((Arg) { .v = layouts }));
-	} else {
-		if(l != layouts && (l - 1)->symbol)
-			setlayout(&((Arg) { .v = (l - 1) }));
-		else
-			setlayout(&((Arg) { .v = &layouts[LENGTH(layouts) - 2] }));
-	}
-}
-
-void
 destroynotify(XEvent *e)
 {
 	Client *c;
@@ -799,6 +782,30 @@ destroynotify(XEvent *e)
 
 	else if ((c = swallowingclient(ev->window)))
 		unmanage(c->swallowing, 1);
+}
+
+void
+deck(Monitor *m)
+{
+	unsigned int i, n, h, mw, my, ns;
+	Client *c;
+
+	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
+	if (n > m->nmaster) {
+ 		mw = m->nmaster ? m->ww * m->mfact : 0;
+		ns = m->nmaster > 0 ? 2 : 1;
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[%d]", n - m->nmaster);
+	} else {
+		mw = m->ww;
+		ns = 1;
+	}
+	for (i = 0, my = m->gap->gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		if (i < m->nmaster) {
+			h = (m->wh - my) / (MIN(n, m->nmaster) - i) - m->gap->gappx;
+			resize(c, m->wx + m->gap->gappx, m->wy + my, mw - (2*c->bw) - m->gap->gappx*(5-ns)/2, h - (2*c->bw), False);
+			my += HEIGHT(c) + m->gap->gappx;
+		} else
+			resize(c, m->wx + mw + m->gap->gappx/ns, m->wy + m->gap->gappx, m->ww - mw - (2*c->bw) - m->gap->gappx*(5-ns)/2, m->wh - (2*c->bw) - 2*m->gap->gappx, False);
 }
 
 void
@@ -880,7 +887,10 @@ drawbar(Monitor *m)
 	if ((w = m->ww - tw - x) > bh) {
 		if (m->sel) {
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
- 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+ 			if (TEXTW(m->sel->name) > w) /* title is bigger than the width of the title rectangle, don't center */
+ 				drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+ 			else /* center window title */
+ 				drw_text(drw, x, 0, w, bh, (w - TEXTW(m->sel->name)) / 2, m->sel->name, 0);
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
