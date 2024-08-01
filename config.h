@@ -9,7 +9,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const Gap default_gap        = {.isgap = 1, .realgap = 10, .gappx = 10};
+static const Gap default_gap        = {.isgap = 1, .realgap = 8, .gappx = 8};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -20,7 +20,7 @@ static const char normbordercolor[] = "#222222";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#ebdbb2";
 static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#121618";
+static const char selbgcolor[]      = "#500000";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
