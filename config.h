@@ -15,10 +15,10 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
-static const char normbgcolor[]     = "#111111";
+static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#000000";
 static const char normfgcolor[]     = "#b7b7b7";
-static const char selfgcolor[]      = "#828587";
+static const char selfgcolor[]      = "#677286";
 static const char selbordercolor[]  = "#1d2021";
 static const char selbgcolor[]      = "#121618";
 static const unsigned int baralpha = 0xf0;
