@@ -8,8 +8,8 @@
 #define AUTH "doas"
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const Gap default_gap        = {.isgap = 1, .realgap = 16, .gappx = 16};
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const Gap default_gap        = {.isgap = 1, .realgap = 8, .gappx = 8};
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -19,7 +19,7 @@ static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#000000";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#da6000";
-static const char selbordercolor[]  = "#282828";
+static const char selbordercolor[]  = "#1d2021";
 static const char selbgcolor[]      = "#161617";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
@@ -57,8 +57,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "H->[]",    deck },
+	{ "H[]",      deck },    /* first entry is default */
+	{ "[]=",      tile },
 	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 };

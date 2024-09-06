@@ -549,9 +549,15 @@ buttonpress(XEvent *e)
 	}
 	if (ev->window == selmon->barwin) {
 		i = x = 0;
-		do
+		unsigned int occ = 0;
+		for(c = m->clients; c; c=c->next)
+			occ |= c->tags == TAGMASK ? 0 : c->tags;
+		do {
+			/* Do not reserve space for vacant tags */
+			if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+				continue;
 			x += TEXTW(tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
+		} while (ev->x >= x && ++i < LENGTH(tags));
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
 			arg.ui = 1 << i;
@@ -803,15 +809,15 @@ deck(Monitor *m)
 	if (n > m->nmaster) {
  		mw = m->nmaster ? m->ww * m->mfact : 0;
 		ns = m->nmaster > 0 ? 2 : 1;
- 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H->[%d]", n - m->nmaster);
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[%d]", n - m->nmaster);
 	} else if (n == m->nmaster) {
 		mw = m->ww;
 		ns = 1;
- 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H->[X]");
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[x]");
 	} else {
 		mw = m->ww;
 		ns = 1;
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H->[]");
+		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[]");
 	}
 	for (i = 0, my = m->gap->gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
@@ -880,19 +886,18 @@ drawbar(Monitor *m)
 	}
 
 	for (c = m->clients; c; c = c->next) {
-		occ |= c->tags;
+		occ |= c->tags == TAGMASK ? 0 : c->tags;
 		if (c->isurgent)
 			urg |= c->tags;
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+		/* Do not draw vacant tags */
+		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+			continue;
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
-				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
-				urg & 1 << i);
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);
