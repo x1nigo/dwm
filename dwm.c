@@ -807,7 +807,7 @@ deck(Monitor *m)
 	} else if (n == m->nmaster) {
 		mw = m->ww;
 		ns = 1;
- 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[x]");
+ 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "H[X]");
 	} else {
 		mw = m->ww;
 		ns = 1;
