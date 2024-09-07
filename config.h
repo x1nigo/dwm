@@ -18,7 +18,7 @@ static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:siz
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#000000";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#da6000";
+static const char selfgcolor[]      = "#da4000";
 static const char selbordercolor[]  = "#1d2021";
 static const char selbgcolor[]      = "#161617";
 static const unsigned int baralpha = 0xf0;
@@ -57,8 +57,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "H[]",      deck },    /* first entry is default */
-	{ "[]=",      tile },
+	{ "[]=",      tile },    /* first entry is default */
+	{ "H[]",      deck },
 	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
