@@ -18,9 +18,9 @@ static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:siz
 static const char normbgcolor[]     = "#121212";
 static const char normbordercolor[] = "#000000";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#000000";
+static const char selfgcolor[]      = "#dc2800";
 static const char selbordercolor[]  = "#1d2021";
-static const char selbgcolor[]      = "#dc2800";
+static const char selbgcolor[]      = "#161617";
 static const unsigned int baralpha = 0xf0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
