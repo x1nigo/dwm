@@ -4,11 +4,12 @@
 #define TERMCLASS "St"
 #define TERM "st"
 #define BROWSER "firefox"
-#define FILEMGR "fm"
+#define FILEMGR "fff"
 #define AUTH "doas"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int altborderpx = 3;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -19,13 +20,13 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
-static const char normbgcolor[]     = "#121212";
-static const char normbordercolor[] = "#000000";
-static const char normfgcolor[]     = "#ebdbb8";
+static const char normbgcolor[]     = "#111111";
+static const char normbordercolor[] = "#222222";
+static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#dc2800";
-static const char selbordercolor[]  = "#500000";
-static const char selbgcolor[]      = "#161617";
-static const unsigned int baralpha = 0xf0;
+static const char selbordercolor[]  = "#570000";
+static const char selbgcolor[]      = "#16181a";
+static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
 	/*                fg           bg           border */
@@ -120,11 +121,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ControlMask,           XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_x,      spawn,          SHCMD("setwp -d") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setwp -x") },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[11]} },
+	{ MODKEY,                       XK_x,      spawn,          SHCMD("painter -d") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("painter -x") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -135,14 +137,15 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
-#ifndef __OpenBSD__
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; ref-bar") },
+	{ MODKEY,                       XK_BackSpace,    spawn,        SHCMD("system-menu") },
+	/* Media Keys */
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; ref-bar") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; ref-bar") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("doas xblight -i; ref-bar") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("doas xblight -d; ref-bar") },
-#endif
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("doas xblight -i; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("doas xblight -d; kill -46 $(pidof dwmblocks)") },
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
