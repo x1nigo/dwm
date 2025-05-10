@@ -138,7 +138,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
-	{ MODKEY,                       XK_BackSpace,    spawn,        SHCMD("system-menu") },
+	{ MODKEY,                       XK_BackSpace,    spawn,        SHCMD("systemmenu") },
 	/* Media Keys */
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
