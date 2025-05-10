@@ -5,7 +5,6 @@
 #define TERM "st"
 #define BROWSER "firefox"
 #define FILEMGR "fff"
-#define AUTH "doas"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -143,8 +142,8 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("doas xblight -i; kill -46 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("doas xblight -d; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("xblight -i; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("xblight -d; kill -46 $(pidof dwmblocks)") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
