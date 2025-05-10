@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "librewolf"
 #define FILEMGR "fff"
 
 /* appearance */
@@ -92,6 +92,8 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define STATUSBAR "dwmblocks"
+
 #include <X11/XF86keysym.h>
 #include "movestack.c"
 static const Key keys[] = {
@@ -142,8 +144,8 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("xblight -i; kill -46 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("xblight -d; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; kill -46 $(pidof dwmblocks)") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -172,6 +174,9 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+ 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+ 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+ 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
