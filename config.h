@@ -4,7 +4,7 @@
 #define TERMCLASS "St"
 #define TERM "st"
 #define BROWSER "librewolf"
-#define FILEMGR "fff"
+#define FILEMGR "lf-ip"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -23,7 +23,7 @@ static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
 static const char selfgcolor[]      = "#ebdbb2";
-static const char selbordercolor[]  = "#0f2837";
+static const char selbordercolor[]  = "#570000";
 static const char selbgcolor[]      = "#0f2837";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
@@ -177,6 +177,7 @@ static const Button buttons[] = {
  	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
  	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
  	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+ 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
  	{ ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 6} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
