@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "librewolf"
 #define FILEMGR "lfup"
 
 /* appearance */
