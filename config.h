@@ -3,12 +3,11 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "librewolf"
+#define BROWSER "firefox"
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int altborderpx = 3;
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -22,9 +21,9 @@ static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:siz
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ebdbb2";
-static const char selbordercolor[]  = "#0f2837";
-static const char selbgcolor[]      = "#0f2837";
+static const char selfgcolor[]      = "#282828";
+static const char selbordercolor[]  = "#570000";
+static const char selbgcolor[]      = "#005577";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
@@ -104,8 +103,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
-	{ MODKEY|Mod1Mask,              XK_b,      toggleborder,   {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
+	{ MODKEY,                       XK_v,      spawn,          SHCMD("watchvid") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -135,7 +134,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-g", "50x20", "-e", "bc", "-l", NULL} } },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "Monospace-16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
 	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("systemmenu") },
@@ -146,7 +145,6 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; kill -46 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; kill -46 $(pidof dwmblocks)") },
-
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
