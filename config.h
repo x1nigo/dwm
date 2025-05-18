@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "librewolf"
+#define BROWSER "firefox"
 #define FILEMGR "lfup"
 
 /* appearance */
@@ -17,7 +17,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
+static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8", "FontAwesome:size=10" };
 static const char normbgcolor[]     = "#222222";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
@@ -145,6 +145,13 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; kill -46 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; kill -46 $(pidof dwmblocks)") },
+	/* Media Keys for "dwmstatus" -- "dwmkill" is used to update the bar. */
+//	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; dwmkill") },
+//	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
+//	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; dwmkill") },
+//	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; dwmkill") },
+//	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; dwmkill") },
+//	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; dwmkill") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
