@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "librewolf"
 #define FILEMGR "lfup"
 
 /* appearance */
@@ -116,8 +116,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-    { MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
-    { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
+        { MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
+        { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ControlMask,           XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
