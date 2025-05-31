@@ -7,7 +7,7 @@
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -21,9 +21,9 @@ static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:siz
 static const char normbgcolor[]     = "#111111";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ebdbb2";
-static const char selbordercolor[]  = "#570000";
-static const char selbgcolor[]      = "#1d2021";
+static const char selfgcolor[]      = "#ff2828";
+static const char selbordercolor[]  = "#373737";
+static const char selbgcolor[]      = "#800000";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
@@ -116,8 +116,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-        { MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
-        { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
+    { MODKEY|ControlMask,           XK_k,      incrgaps,       {.i = +1 } },
+    { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
 	{ MODKEY,                       XK_g,      togglegaps,     {0} },
 	{ MODKEY|ControlMask,           XK_g,      defaultgaps,    {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
