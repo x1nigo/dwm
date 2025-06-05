@@ -17,13 +17,13 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8", "FontAwesome:size=10" };
-static const char normbgcolor[]     = "#111111";
+static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ff2828";
-static const char selbordercolor[]  = "#373737";
-static const char selbgcolor[]      = "#870000";
+static const char selfgcolor[]      = "#ebdbb2";
+static const char selbordercolor[]  = "#005577";
+static const char selbgcolor[]      = "#005577";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
