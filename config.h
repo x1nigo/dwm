@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "zen-browser"
+#define BROWSER "zen-browser" /* toggle between firefox, librewolf, and zen-browser */
 #define FILEMGR "lfup"
 
 /* appearance */
