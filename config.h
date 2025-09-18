@@ -7,23 +7,23 @@
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 30;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappoh    = 8;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 28;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
+static const char *fonts[]          = { "monospace:size=10:antialias=true:autohint=true", "NotoColorEmoji:size=8:antialias=true:autohint=true" };
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ebdbb2";
-static const char selbgcolor[]      = "#0f2837";
-static const char selbordercolor[]  = "#870000";
+static const char selfgcolor[]      = "#282828";
+static const char selbgcolor[]      = "#005577";
+static const char selbordercolor[]  = "#570000";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]        = {
@@ -103,9 +103,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
-	{ MODKEY,                     ALTKEY,      togglebar,      {0} },
-	{ MODKEY,                       XK_b,      spawn,          SHCMD("bookmarker") },
-	{ MODKEY,                       XK_v,      spawn,          SHCMD("watchvid") },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-boomark") },
+	{ MODKEY,                       XK_v,      spawn,          SHCMD("dm-videos") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -119,8 +119,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_x,      spawn,          SHCMD("setbg -d") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("setbg -x") },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_x,      spawn,          SHCMD("dm-wallpaper -d") },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("dm-wallpaper -x") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
     { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
@@ -134,10 +137,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "Monospace-16", "-g", "50x20", "-e", "bc", "-l", NULL} } },
-	{ MODKEY,                       XK_Insert, spawn,          SHCMD("inserter") },
-	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dmenumoji") },
-	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("systemmenu") },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "Monospace-16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
+	{ MODKEY,                       XK_Insert, spawn,          SHCMD("dm-insert") },
+	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dm-emoji") },
+	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("dm-system") },
 	/* Media Keys */
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
@@ -162,11 +165,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("fontwizard") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer"} } },
-	{ MODKEY,                       XK_F4,     spawn,          SHCMD("selectdisplay") },
+	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
 	{ MODKEY,                       XK_F12,    quit,           {0} },
-	{ 0,                            XK_Print,  spawn,          SHCMD("printscreen") },
+	{ 0,                            XK_Print,  spawn,          SHCMD("dm-printscreen") },
 };
 
 /* button definitions */
