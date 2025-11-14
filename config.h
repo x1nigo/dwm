@@ -17,15 +17,15 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 24;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "monospace:size=10:antialias=true",
-	"NotoColorEmoji:size=8:antialias=true",
-	"Mononoki Nerd Font:size=8:antialias=true" };
-static const char normbgcolor[]     = "#21242b";
+static const int user_bh            = 21;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "Sans:bold:size=10",
+                                        "NotoColorEmoji:size=8",
+                                        "Mononoki Nerd Font:size=8" };
+static const char normbgcolor[]     = "#1d2026";
 static const char normbordercolor[] = "#282828";
 static const char normfgcolor[]     = "#d7d7d7";
-static const char selfgcolor[]      = "#282828";
-static const char selbgcolor[]      = "#003757";
+static const char selfgcolor[]      = "#d7d7d7";
+static const char selbgcolor[]      = "#21242b";
 static const char selbordercolor[]  = "#570000";
 static const unsigned int baralpha = 0xef;
 static const unsigned int borderalpha = OPAQUE;
@@ -41,8 +41,9 @@ static const unsigned int alphas[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+// static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "󰼭", "", "󰈈", "", "", "󰣘" };
+static const char *tags[] = { "www", "dev", "media", "docx", "art", "sfx", "audio", "sys", "misc" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -50,9 +51,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
     /* class            instance      title           tags mask  isfloating isterminal noswallow  monitor */
-    { BROWSER,          NULL,         NULL,           0,         0,         0,         0,         -1 },
+    { BROWSER,          NULL,         NULL,           1,         0,         0,         0,         -1 },
     { TERMCLASS,        NULL,         NULL,           0,         0,         1,         0,         -1 },
-    { TERMCLASS,        "termfloat",  NULL,           0,         1,         1,         0,         -1 },
+    { "termfloat",      NULL,         NULL,           0,         1,         1,         0,         -1 },
     { NULL,             NULL,         "Event Tester", 0,         0,         0,         1,         -1 }, /* xev */
 };
 
@@ -96,17 +97,15 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-#define STATUSBAR "dwmblocks"
-
 #include <X11/XF86keysym.h>
 #include "movestack.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-n", "termfloat", "-g", "128x38", NULL } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-c", "termfloat", "-g", "128x38", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
-	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run -h 21") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-boomark") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("dm-videos") },
@@ -186,11 +185,6 @@ static const Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
- 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
- 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
- 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
- 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
- 	{ ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 6} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
