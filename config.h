@@ -98,7 +98,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", MSCPLAYER, NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-boomark") },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-bookmark") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("dm-videos") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
