@@ -22,8 +22,8 @@ static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
-static const char normfgcolor[]     = "#b7b7b7";
-static const char selfgcolor[]      = "#b7b7b7";
+static const char normfgcolor[]     = "#ebdbb2";
+static const char selfgcolor[]      = "#ebdbb2";
 static const char selbgcolor[]      = "#0f2737";
 static const char selbordercolor[]  = "#570000";
 static const char *colors[][3]      = {
@@ -131,7 +131,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-n", "termfloat", "-f", "Monospace-16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
+	{ MODKEY,                       XK_apostrophe, spawn,      {.v = (const char*[]){TERM, "-c", "termfloat", "-f", "Monospace-16", "-g", "50x20", "-e", "bc", "-lq", NULL} } },
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD("dm-insert") },
 	{ MODKEY,                       XK_grave,  spawn,          SHCMD("dm-emoji") },
 	{ MODKEY,                       XK_u,      spawn,          SHCMD("dm-unicode") },
