@@ -18,7 +18,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Monospace:size=10" };
-static unsigned int baralpha        = 0xff;
+static unsigned int baralpha        = 0xf7;
 static unsigned int borderalpha     = OPAQUE;
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
@@ -88,6 +88,7 @@ static const Layout layouts[] = {
 
 #include <X11/XF86keysym.h>
 #include "movestack.c"
+#define STATUSBAR "dwmblocks"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -97,7 +98,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", MSCPLAYER, NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
-	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-bookmark") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("dm-videos") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -113,11 +114,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+ 	{ MODKEY|ControlMask,           XK_f,      togglefullscr,  {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ShiftMask,             XK_y,      setlayout,      {.v = &layouts[7]} },
-	{ MODKEY,                       XK_x,      spawn,          SHCMD("dm-wallpaper -d") },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("dm-wallpaper -x") },
+	{ MODKEY,                       XK_x,      spawn,          SHCMD("dm-wallpaper -s") },
+	{ MODKEY|ControlMask,           XK_x,      spawn,          SHCMD("dm-wallpaper -r") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
     { MODKEY|ControlMask,           XK_j,      incrgaps,       {.i = -1 } },
@@ -138,7 +140,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("dm-system") },
 	/* Media Keys */
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; kill -46 $(pidof dwmblocks)") },
@@ -152,10 +154,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,                       XK_F1,     spawn,          SHCMD("readme") },
+	{ MODKEY,                       XK_F1,     spawn,          SHCMD("$TERMINAL -f Monospace-12 -e $EDITOR ~/.local/share/README.md") }, /* This relies on certain environmental variables. */
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
-	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer"} } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
+	{ MODKEY,                       XK_F11,    spawn,          SHCMD("reblocks") }, /* Restart dwmblocks */
 	{ MODKEY,                       XK_F12,    quit,           {0} },
 	{ 0,                            XK_Print,  spawn,          SHCMD("dm-printscreen") },
 };
@@ -167,6 +170,15 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+ 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+ 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+ 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
+ 	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
+ 	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
+ 	{ ClkStatusText,        0,              6,              sigstatusbar,   {.i = 6} },
+ 	{ ClkStatusText,        0,              7,              sigstatusbar,   {.i = 7} },
+ 	{ ClkStatusText,        0,              8,              sigstatusbar,   {.i = 8} },
+ 	{ ClkStatusText,        0,              9,              sigstatusbar,   {.i = 9} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
