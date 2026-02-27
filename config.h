@@ -18,7 +18,7 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
-static unsigned int baralpha        = 0xf7;
+static unsigned int baralpha        = 0xef;
 static unsigned int borderalpha     = OPAQUE;
 static const char normbgcolor[]     = "#1d2021";
 static const char normbordercolor[] = "#282828";
