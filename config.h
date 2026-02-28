@@ -93,7 +93,7 @@ static const Layout layouts[] = {
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-c", "termfloat", "-g", "120x32", NULL } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-c", "termfloat", "-g", "98x28", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", MSCPLAYER, NULL } } },
