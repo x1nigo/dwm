@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox" /* toggle between firefox, librewolf, and zen-browser */
+#define BROWSER "firefox"
 #define FILEMGR "lfup"
 #define MSCPLAYER "ncmpcpp"
 
