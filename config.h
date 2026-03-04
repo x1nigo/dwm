@@ -6,6 +6,7 @@
 #define BROWSER "firefox"
 #define FILEMGR "lfup"
 #define MSCPLAYER "ncmpcpp"
+#define AUDIOMIXER "pulsemixer"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -159,7 +160,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD("$TERMINAL -f Monospace-12 -e $EDITOR ~/.local/share/README.md") }, /* This relies on certain environmental variables. */
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
-	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", AUDIOMIXER, NULL} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("reblocks") }, /* Restart dwmblocks */
 	{ MODKEY,                       XK_F12,    quit,           {0} },
