@@ -162,6 +162,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", AUDIOMIXER, NULL} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
+	{ MODKEY,                       XK_F9,     spawn,          SHCMD("dm-record") },
+	{ MODKEY,                       XK_F10,    spawn,          SHCMD("dm-record stop") },
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("reblocks") }, /* Restart dwmblocks */
 	{ MODKEY,                       XK_F12,    quit,           {0} },
 	{ 0,                            XK_Print,  spawn,          SHCMD("dm-printscreen") },
