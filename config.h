@@ -1,12 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
-/* Constants */
+/* variables */
 #define TERMCLASS "St"
 #define TERM "st"
 #define BROWSER "firefox"
 #define FILEMGR "lfup"
-#define MSCPLAYER "ncmpcpp"
-#define AUDIOMIXER "pulsemixer"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -18,7 +16,7 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "NotoColorEmoji:size=8" };
+static const char *fonts[]          = { "monospace:size=10", "JoyPixels:size=8", "NotoColorEmoji:size=8" };
 static unsigned int baralpha        = 0xf7;
 static unsigned int borderalpha     = OPAQUE;
 static const char normbgcolor[]     = "#1d2021";
@@ -28,7 +26,7 @@ static const char selfgcolor[]      = "#ebdbb2";
 static const char selbgcolor[]      = "#242729";
 static const char selbordercolor[]  = "#570000";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
+	/*                fg            bg           border   */
 	[SchemeNorm]  = { normfgcolor,  normbgcolor, normbordercolor },
 	[SchemeSel]   = { selfgcolor,   selbgcolor,  selbordercolor  },
 };
@@ -94,10 +92,10 @@ static const Layout layouts[] = {
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_Return, spawn,          SHCMD(TERM) },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-c", "termfloat", "-g", "98x28", NULL } } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ TERM, "-c", "termfloat", "-g", "120x37", NULL } } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD(BROWSER) },
 	{ MODKEY,                       XK_r,      spawn,          {.v = (const char*[]){TERM, "-e", FILEMGR, NULL } } },
-	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", MSCPLAYER, NULL } } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = (const char*[]){TERM, "-e", "ncmpcpp", NULL } } },
 	{ MODKEY,                       XK_d,      spawn,          SHCMD("dmenu_run") },
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-bookmark") },
@@ -143,12 +141,12 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_u,      spawn,          SHCMD("dm-unicode") },
 	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("dm-system") },
 	/* Media Keys */
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; kill -46 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; kill -46 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; pkill -RTMIN+12 dwmblocks") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; pkill -RTMIN+12 dwmblocks") },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -160,7 +158,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD("$TERMINAL -f Monospace-12 -e $EDITOR ~/.local/share/README.md") }, /* This relies on certain environmental variables. */
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
-	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", AUDIOMIXER, NULL} } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
 	{ MODKEY,                       XK_F9,     spawn,          SHCMD("dm-record") },
 	{ MODKEY,                       XK_F10,    spawn,          SHCMD("dm-record stop") },
