@@ -7,7 +7,7 @@
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -16,19 +16,21 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "JoyPixels:size=8", "NotoColorEmoji:size=8" };
-static unsigned int baralpha        = 0xf7;
+static const char *fonts[]          = { "monospace:size=10",
+                                        "JoyPixels:size=8",
+                                        "NotoColorEmoji:size=8" };
+static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
-static const char normbgcolor[]     = "#1d2021";
-static const char normbordercolor[] = "#282828";
-static const char normfgcolor[]     = "#ebdbb2";
-static const char selfgcolor[]      = "#ebdbb2";
-static const char selbgcolor[]      = "#242729";
-static const char selbordercolor[]  = "#720000";
+static const char col_fg1[]         = "#ebdbb2";
+static const char col_bg1[]         = "#1d2021";
+static const char col_bdr1[]        = "#282828";
+static const char col_fg2[]         = "#ebdbb2";
+static const char col_bg2[]         = "#005577";
+static const char col_bdr2[]        = "#005577";
 static const char *colors[][3]      = {
-	/*                fg            bg           border   */
-	[SchemeNorm]  = { normfgcolor,  normbgcolor, normbordercolor },
-	[SchemeSel]   = { selfgcolor,   selbgcolor,  selbordercolor  },
+	/*               fg       bg        border   */
+	[SchemeNorm] = { col_fg1, col_bg1,  col_bdr1 },
+	[SchemeSel]  = { col_fg2, col_bg2,  col_bdr2 },
 };
 
 /* tagging */
@@ -46,11 +48,11 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
+static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster        = 1;    /* number of clients in master area */
+static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
+static const int refreshrate    = 120;  /* refresh rate (per second) for client move/resize */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
@@ -142,7 +144,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("dm-system") },
 	/* Media Keys */
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
-	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; pkill -RTMIN+10 dwmblocks") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; pkill -RTMIN+12 dwmblocks") },
@@ -160,6 +162,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dm-fonts") },
 	{ MODKEY,                       XK_F3,     spawn,          {.v = (const char*[]){TERM, "-e", "pulsemixer", NULL} } },
 	{ MODKEY,                       XK_F4,     spawn,          SHCMD("dm-display") },
+	{ MODKEY,                       XK_F5,     spawn,          {.v = (const char*[]){TERM, "-e", "nmtui", NULL} } },
 	{ MODKEY,                       XK_F9,     spawn,          SHCMD("dm-record") },
 	{ MODKEY,                       XK_F10,    spawn,          SHCMD("dm-record stop") },
 	{ MODKEY,                       XK_F11,    spawn,          SHCMD("reblocks") }, /* Restart dwmblocks */
@@ -177,12 +180,9 @@ static const Button buttons[] = {
  	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
  	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
  	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
- 	{ ClkStatusText,        0,              Button4,        sigstatusbar,   {.i = 4} },
- 	{ ClkStatusText,        0,              Button5,        sigstatusbar,   {.i = 5} },
- 	{ ClkStatusText,        0,              6,              sigstatusbar,   {.i = 6} },
- 	{ ClkStatusText,        0,              7,              sigstatusbar,   {.i = 7} },
- 	{ ClkStatusText,        0,              8,              sigstatusbar,   {.i = 8} },
- 	{ ClkStatusText,        0,              9,              sigstatusbar,   {.i = 9} },
+ 	{ ClkStatusText,        ShiftMask,      Button1,        sigstatusbar,   {.i = 4} },
+ 	{ ClkStatusText,        ShiftMask,      Button2,        sigstatusbar,   {.i = 5} },
+ 	{ ClkStatusText,        ShiftMask,      Button3,        sigstatusbar,   {.i = 6} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
