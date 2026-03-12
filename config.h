@@ -7,7 +7,7 @@
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -23,10 +23,10 @@ static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
 static const char col_fg1[]         = "#ebdbb2";
 static const char col_bg1[]         = "#1d2021";
-static const char col_bdr1[]        = "#282828";
-static const char col_fg2[]         = "#ebdbb2";
-static const char col_bg2[]         = "#005577";
-static const char col_bdr2[]        = "#005577";
+static const char col_bdr1[]        = "#444444";
+static const char col_fg2[]         = "#000000";
+static const char col_bg2[]         = "#875737";
+static const char col_bdr2[]        = "#720000";
 static const char *colors[][3]      = {
 	/*               fg       bg        border   */
 	[SchemeNorm] = { col_fg1, col_bg1,  col_bdr1 },
