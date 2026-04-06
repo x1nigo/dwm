@@ -16,16 +16,14 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10",
-                                        "JoyPixels:size=8",
-                                        "NotoColorEmoji:size=8" };
+static const char *fonts[]          = { "monospace:size=10", "JoyPixels:size=8", "NotoColorEmoji:size=8" };
 static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
 static const char col_fg1[]         = "#ebdbb2";
-static const char col_bg1[]         = "#1d2021";
+static const char col_bg1[]         = "#222222";
 static const char col_bdr1[]        = "#444444";
-static const char col_fg2[]         = "#000000";
-static const char col_bg2[]         = "#875737";
+static const char col_fg2[]         = "#ebdbb2";
+static const char col_bg2[]         = "#242729";
 static const char col_bdr2[]        = "#720000";
 static const char *colors[][3]      = {
 	/*               fg       bg        border   */
@@ -102,6 +100,7 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("dm-bookmark") },
 	{ MODKEY,                       XK_v,      spawn,          SHCMD("dm-videos") },
+    { MODKEY,                       XK_i,      spawn,          SHCMD("gimp") },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
  	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
