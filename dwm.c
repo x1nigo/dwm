@@ -869,6 +869,14 @@ drawbar(Monitor *m)
 	if (!m->showbar)
 		return;
 
+	/* remove bar if there are no windows */
+	if (!m->clients) {
+        XMoveWindow(dpy, m->barwin, m->wx, -20); // Move bar off-screen
+        return;
+    } else {
+        XMoveWindow(dpy, m->barwin, m->wx, m->by); // Ensure bar is in place
+    }
+
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		char *text, *s, ch;

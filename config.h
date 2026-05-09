@@ -20,10 +20,10 @@ static const char *fonts[]          = { "monospace:size=10", "JoyPixels:size=8",
 static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
 static const char col_fg1[]         = "#ebdbb2";
-static const char col_bg1[]         = "#222222";
-static const char col_bdr1[]        = "#444444";
+static const char col_bg1[]         = "#121618";
+static const char col_bdr1[]        = "#000000";
 static const char col_fg2[]         = "#ebdbb2";
-static const char col_bg2[]         = "#242729";
+static const char col_bg2[]         = "#1d2021";
 static const char col_bdr2[]        = "#720000";
 static const char *colors[][3]      = {
 	/*               fg       bg        border   */
