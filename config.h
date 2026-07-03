@@ -3,7 +3,7 @@
 /* variables */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "firefox"
+#define BROWSER "chrome"
 #define FILEMGR "lfup"
 
 /* appearance */
@@ -22,8 +22,8 @@ static unsigned int borderalpha     = OPAQUE;
 static const char col_fg1[]         = "#ebdbb2";
 static const char col_bg1[]         = "#121618";
 static const char col_bdr1[]        = "#000000";
-static const char col_fg2[]         = "#dc2800";
-static const char col_bg2[]         = "#1d2021";
+static const char col_fg2[]         = "#ebdbb2";
+static const char col_bg2[]         = "#570000";
 static const char col_bdr2[]        = "#720000";
 static const char *colors[][3]      = {
 	/*               fg       bg        border   */
@@ -142,12 +142,20 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_u,      spawn,          SHCMD("dm-unicode") },
 	{ MODKEY,                       XK_BackSpace,    spawn,    SHCMD("dm-system") },
 	/* Media Keys */
+#ifdef __FreeBSD__
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("mixer vol.mute=toggle") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("mixer vol=+5%") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("mixer vol=-5%") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("backlight + 5") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("backlight - 5") },
+#else
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle; pkill -RTMIN+11 dwmblocks") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-; pkill -RTMIN+10 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("brightnessctl s 5%+; pkill -RTMIN+12 dwmblocks") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("brightnessctl s 5%-; pkill -RTMIN+12 dwmblocks") },
+#endif /* __FreeBSD__ */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
