@@ -3,11 +3,11 @@
 /* variables */
 #define TERMCLASS "St"
 #define TERM "st"
-#define BROWSER "chrome"
+#define BROWSER "firefox"
 #define FILEMGR "lfup"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -16,15 +16,15 @@ static const unsigned int gappov    = 30;       /* vert outer gap between window
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10", "JoyPixels:size=8", "NotoColorEmoji:size=8" };
+static const char *fonts[]          = { "monospace:size=10.5", "JoyPixels:size=8", "NotoColorEmoji:size=8" };
 static unsigned int baralpha        = 0xff;
 static unsigned int borderalpha     = OPAQUE;
 static const char col_fg1[]         = "#ebdbb2";
-static const char col_bg1[]         = "#121618";
+static const char col_bg1[]         = "#1d2021";
 static const char col_bdr1[]        = "#000000";
 static const char col_fg2[]         = "#ebdbb2";
-static const char col_bg2[]         = "#570000";
-static const char col_bdr2[]        = "#720000";
+static const char col_bg2[]         = "#3f1803";
+static const char col_bdr2[]        = "#3f1803";
 static const char *colors[][3]      = {
 	/*               fg       bg        border   */
 	[SchemeNorm] = { col_fg1, col_bg1,  col_bdr1 },
@@ -46,7 +46,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact        = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact        = 0.7; /* factor of master area size [0.05..0.95] */
 static const int nmaster        = 1;    /* number of clients in master area */
 static const int resizehints    = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen window */
